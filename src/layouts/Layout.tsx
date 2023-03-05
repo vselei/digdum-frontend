@@ -39,6 +39,11 @@ const Layout = () => {
             font-weight: normal;
           }
 
+          a {
+            text-decoration: none;
+            color: initial;
+          }
+
           button,
           input,
           optgroup,
