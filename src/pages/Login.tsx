@@ -1,6 +1,6 @@
 import { Global, css } from '@emotion/react';
 
-const App = () => {
+const Login = () => {
   return (
     <>
       <Global
@@ -49,9 +49,10 @@ const App = () => {
           }
         `}
       />
-      <p>ola mundo</p>
+      
+      <p>ola</p>
     </>
   );
 };
 
-export default App;
+export default Login;
