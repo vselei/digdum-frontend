@@ -1,5 +1,6 @@
 import { Global, css } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Layout = () => {
   return (
@@ -70,7 +71,19 @@ const Layout = () => {
           }
         `}
       />
-      <Outlet />
+
+      <HelmetProvider>
+        <Helmet>
+          <meta name='author' content='Victor Seleimend' />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+            rel="stylesheet"
+          />
+        </Helmet>
+        <Outlet />
+      </HelmetProvider>
     </>
   );
 };
