@@ -23,6 +23,7 @@ const Layout = () => {
 
           body {
             font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
           }
 
           h1,
