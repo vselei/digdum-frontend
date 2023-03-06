@@ -2,6 +2,8 @@ import { Global, css } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
+import icon from '../../public/img/favicon.svg'
+
 const Layout = () => {
   return (
     <>
@@ -82,6 +84,7 @@ const Layout = () => {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
+          <link rel="icon" href={icon} type="image/svg+xml" />
         </Helmet>
         <Outlet />
       </HelmetProvider>
