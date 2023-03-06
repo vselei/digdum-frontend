@@ -9,6 +9,11 @@ const Layout = () => {
     <>
       <Global
         styles={css`
+          :root {
+            --color-white: #f4f4f4;
+            --color-blue-900: #050119;
+          } 
+
           html {
             box-sizing: border-box;
             line-height: 1.15;
@@ -26,6 +31,7 @@ const Layout = () => {
           body {
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
+            background: linear-gradient(to right, #ffffff, var(--color-white));
           }
 
           h1,
