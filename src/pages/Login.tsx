@@ -7,6 +7,7 @@ import FormInput from '../components/FormInput';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
 import Link from '../components/Link';
+import FlexContainer from '../components/FlexContainer';
 
 const Login = () => {
   return (
@@ -34,8 +35,10 @@ const Login = () => {
           placeholder="Digite sua senha"
         />
         <Button type="submit">Entrar</Button>
-        <Link href='#'>Não tem uma conta? Cadastre-se!</Link>
-        <Link href='#'>Esqueceu sua senha?</Link>
+        <FlexContainer justifyContent='space-between' alignItems='center' width='var(--size-full)' maxWidth='var(--resolution-480)'>
+          <Link href="#">Não tem uma conta? Cadastre-se!</Link>
+          <Link href="#">Esqueceu sua senha?</Link>
+        </FlexContainer>
       </Form>
     </>
   );
