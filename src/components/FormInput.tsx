@@ -1,7 +1,7 @@
 import Input from '../components/Input';
 import Label from '../components/Label';
 
-const useInput = ({
+const FormInput = ({
   label,
   type,
   placeholder
@@ -29,4 +29,4 @@ const useInput = ({
   );
 };
 
-export default useInput;
+export default FormInput;
