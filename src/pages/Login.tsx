@@ -8,6 +8,7 @@ import Logo from '../components/Logo';
 import Button from '../components/Button';
 import Link from '../components/Link';
 import FlexContainer from '../components/FlexContainer';
+import Heading from '../components/Heading';
 
 const Login = () => {
   return (
@@ -22,6 +23,7 @@ const Login = () => {
         width={480}
       />
       <Form method="post">
+        <Heading>Login</Heading>
         <FormInput
           id="email"
           label="E-mail"

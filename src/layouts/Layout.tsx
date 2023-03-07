@@ -19,6 +19,8 @@ const Layout = () => {
             --size-1: 1rem;
             --size-1-2: 1.5rem;
             --size-2: 2rem;
+            --size-3: 3rem;
+            --size-4: 4rem;
 
             --size-full: 100%;
             
