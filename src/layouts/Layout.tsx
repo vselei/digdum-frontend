@@ -10,8 +10,12 @@ const Layout = () => {
       <Global
         styles={css`
           :root {
-            --background-color: #f4f4f4;
-            --text-color: #050119;
+            --color-white: #f4f4f4;
+            --color-blue-900: #050119;
+
+            --size-1: 1.4rem;
+
+            --weight-700: 700;
           } 
 
           html {
@@ -31,7 +35,7 @@ const Layout = () => {
           body {
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
-            background: linear-gradient(to right, #ffffff, var(--background-color));
+            background: linear-gradient(to right, #ffffff, var(--color-white));
           }
 
           h1,

@@ -1,5 +1,6 @@
 import Input from '../components/Input';
 import Label from '../components/Label';
+import FormControl from './FormControl';
 
 const FormInput = ({
   id,
@@ -13,10 +14,10 @@ const FormInput = ({
   placeholder?: string;
 }) => {
   return (
-    <div>
+    <FormControl>
       <Label htmlFor={id}>{label}</Label>
       <Input type={type} placeholder={placeholder || ''} id={id} name={id} />
-    </div>
+    </FormControl>
   );
 };
 
