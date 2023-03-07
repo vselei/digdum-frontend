@@ -10,11 +10,22 @@ const Layout = () => {
       <Global
         styles={css`
           :root {
+            /* colors */
             --color-white: #f4f4f4;
+            
             --color-blue-900: #050119;
 
-            --size-1: 1.4rem;
+            /* sizes */
+            --size-1: 1rem;
+            --size-1-2: 1.5rem;
+            --size-2: 2rem;
 
+            --size-full: 100%;
+            
+            /* resolutions */
+            --resolution-480: 48rem;
+
+            /* weights */
             --weight-700: 700;
           } 
 
