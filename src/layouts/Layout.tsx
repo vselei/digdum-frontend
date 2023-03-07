@@ -27,6 +27,9 @@ const Layout = () => {
 
             /* weights */
             --weight-700: 700;
+
+            /* animations */
+            --animation-300: 300ms;
           } 
 
           html {
