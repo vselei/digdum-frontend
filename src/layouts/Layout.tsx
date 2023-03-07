@@ -23,6 +23,9 @@ const Layout = () => {
             --size-4: 4rem;
 
             --size-full: 100%;
+
+            /* vh */
+            --h-100: 100vh;
             
             /* resolutions */
             --resolution-480: 48rem;
@@ -50,7 +53,7 @@ const Layout = () => {
 
           body {
             font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
+            min-height: var(--h-100);
             background: linear-gradient(to right, #ffffff, var(--color-white));
           }
 
