@@ -2,7 +2,7 @@ import { Global, css } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import icon from '../../public/img/favicon.svg'
+import icon from '/img/favicon.svg'
 
 const Layout = () => {
   return (
@@ -10,8 +10,8 @@ const Layout = () => {
       <Global
         styles={css`
           :root {
-            --color-white: #f4f4f4;
-            --color-blue-900: #050119;
+            --background-color: #f4f4f4;
+            --text-color: #050119;
           } 
 
           html {
@@ -31,7 +31,7 @@ const Layout = () => {
           body {
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
-            background: linear-gradient(to right, #ffffff, var(--color-white));
+            background: linear-gradient(to right, #ffffff, var(--background-color));
           }
 
           h1,
