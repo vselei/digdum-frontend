@@ -9,7 +9,7 @@ const Head = ({
 }) => {
   return (
     <Helmet>
-      <title>{title}</title>
+      <title>DigDum | {title}</title>
       <meta name="description" content={description} />
     </Helmet>
   );
