@@ -6,6 +6,7 @@ import Head from '../components/Head';
 import FormInput from '../components/FormInput';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
+import Link from '../components/Link';
 
 const Login = () => {
   return (
@@ -33,6 +34,8 @@ const Login = () => {
           placeholder="Digite sua senha"
         />
         <Button type="submit">Entrar</Button>
+        <Link>Não tem uma conta? Cadastre-se!</Link>
+        <Link>Esqueceu sua senha?</Link>
       </Form>
     </>
   );

@@ -1,12 +1,14 @@
 import styled from '@emotion/styled';
 
 const Button = styled.button`
+  display: block;
   cursor: pointer;
   color: var(--color-white);
   background-color: var(--color-blue-900);
   width: var(--size-full);
   max-width: var(--resolution-480);
   padding: var(--size-1-2);
+  margin-bottom: var(--size-1);
   border: 1px solid var(--color-blue-900);
   border-radius: var(--size-1);
   font-size: var(--size-1);
