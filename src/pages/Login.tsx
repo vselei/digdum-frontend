@@ -12,9 +12,22 @@ const Login = () => {
       />
       <Form method="post">
         <FormInput
+          id="email"
           label="E-mail"
           type="email"
           placeholder="Digite seu e-mail"
+        />
+        <FormInput
+          id="password"
+          label="Senha"
+          type="password"
+          placeholder="Digite sua senha"
+        />
+        <FormInput
+          id="confirm-password"
+          label="Confirmar Senha"
+          type="password"
+          placeholder="Confirme sua senha"
         />
       </Form>
     </>
