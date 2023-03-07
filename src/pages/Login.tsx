@@ -34,8 +34,8 @@ const Login = () => {
           placeholder="Digite sua senha"
         />
         <Button type="submit">Entrar</Button>
-        <Link>Não tem uma conta? Cadastre-se!</Link>
-        <Link>Esqueceu sua senha?</Link>
+        <Link href='#'>Não tem uma conta? Cadastre-se!</Link>
+        <Link href='#'>Esqueceu sua senha?</Link>
       </Form>
     </>
   );

@@ -10,7 +10,6 @@ const Input = styled.input`
   text-transform: uppercase;
   color: var(--color-blue-900);
   width: var(--size-full);
-  max-width: var(--resolution-480);
 
   &::placeholder {
     color: var(--color-blue-900);
