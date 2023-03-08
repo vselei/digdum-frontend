@@ -1,4 +1,4 @@
-import { Form, useActionData, ActionFunctionArgs } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 
 import Head from '../components/Head';
 import FormInput from '../components/FormInput';
@@ -9,19 +9,14 @@ import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
 
 import signUpSteps from '../utilities/signUpSteps';
-
-export const action = async ({ request }: ActionFunctionArgs) => {
-  const form = await request.formData();
-
-  const steps = form.get('steps');
-
-  return {
-    steps
-  };
-};
+import { useState } from 'react';
 
 const SignUp = () => {
-  const steps = 0;
+  const [steps, setSteps] = useState(0);
+
+  const handleIncreaseSteps = () => {
+    setSteps(steps + 1);
+  };
 
   return (
     <>
@@ -39,9 +34,11 @@ const SignUp = () => {
         minHeight="var(--h-100)"
       >
         <Logo />
-        <Form method="post">
+        <Form method="post" onSubmit={handleIncreaseSteps}>
           <Heading>Cadastre-se</Heading>
-          {signUpSteps[steps].map(step => (
+          {signUpSteps[
+            steps < signUpSteps.length ? steps : signUpSteps.length - 1
+          ].map(step => (
             <FormInput
               key={step.id}
               id={step.id}
@@ -50,7 +47,6 @@ const SignUp = () => {
               placeholder={step.placeholder}
             />
           ))}
-          <input type="hidden" name="steps" value={steps || 0} />
           <Button type="submit">
             {steps < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
           </Button>
