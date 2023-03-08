@@ -1,16 +1,15 @@
 import { useState, createContext } from 'react';
 
+const detectColorScheme = () =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
 const ThemesContext = createContext({
   handleThemeChanges: () => {},
-  theme: window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
+  theme: detectColorScheme()
 });
 
 const ThemesProvider = ({ children }: { children: React.ReactElement }) => {
-  const [theme, setTheme] = useState(
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  );
+  const [theme, setTheme] = useState(detectColorScheme());
 
   const handleThemeChanges = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
