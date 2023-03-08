@@ -6,7 +6,9 @@ const ThemesContext = createContext({
 });
 
 const ThemesProvider = ({ children }: { children: React.ReactElement }) => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'false'
+  );
 
   const handleThemeChanges = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
