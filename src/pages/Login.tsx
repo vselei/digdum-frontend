@@ -1,6 +1,7 @@
 import { Form } from 'react-router-dom';
 
-import WhiteLogo from '/img/digdum-logo.svg';
+import WhiteThemeLogo from '/img/digdum-logo.svg';
+import DarkThemeLogo from '/img/digdum-logo2.svg';
 
 import Head from '../components/Head';
 import FormInput from '../components/FormInput';
@@ -9,8 +10,11 @@ import Button from '../components/Button';
 import Link from '../components/Link';
 import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
+import useThemes from '../hooks/useThemes';
 
 const Login = () => {
+  const { theme } = useThemes();
+
   return (
     <>
       <Head
@@ -27,7 +31,7 @@ const Login = () => {
         minHeight="var(--h-100)"
       >
         <Logo
-          src={WhiteLogo}
+          src={theme === 'dark' ? DarkThemeLogo : WhiteThemeLogo}
           alt="Logo DigDum: Um panda branco e azul escuro, segurando um celular"
           width={480}
         />
