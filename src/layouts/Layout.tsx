@@ -2,17 +2,21 @@ import { Global, css } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
+import useThemes from '../hooks/useThemes';
+
 import icon from '/img/favicon.svg';
 
 const Layout = () => {
+  const { theme } = useThemes();
+
   return (
     <>
       <Global
         styles={css`
           :root {
             /* colors */
-            --primary-color: #050119;
-            --secondary-color: #f4f4f4;
+            --primary-color: ${theme === 'light' ? '#050119' : '#f4f4f4'};
+            --secondary-color: ${theme === 'dark' ? '#050119' : '#f4f4f4'};
 
             /* sizes */
             --size-1: 1rem;
@@ -119,7 +123,7 @@ const Layout = () => {
           />
           <link rel="icon" href={icon} type="image/svg+xml" />
         </Helmet>
-          <Outlet />
+        <Outlet />
       </HelmetProvider>
     </>
   );
