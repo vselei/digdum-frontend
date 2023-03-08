@@ -7,7 +7,7 @@ import Head from '../components/Head';
 import FormInput from '../components/FormInput';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
-import Link from '../components/Link';
+import Anchor from '../components/Anchor';
 import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
 import useThemes from '../hooks/useThemes';
@@ -60,8 +60,8 @@ const Login = () => {
             width="var(--size-full)"
             maxWidth="var(--resolution-480)"
           >
-            <Link href="#">Não tem uma conta? Cadastre-se!</Link>
-            <Link href="#">Esqueceu sua senha?</Link>
+            <Anchor path='sign-up'>Não tem uma conta? Cadastre-se!</Anchor>
+            <Anchor path='forgot-password'>Esqueceu sua senha?</Anchor>
           </FlexContainer>
         </Form>
       </FlexContainer>
