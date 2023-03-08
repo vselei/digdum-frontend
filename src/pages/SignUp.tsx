@@ -26,7 +26,7 @@ const SignUp = () => {
       >
         <Logo />
         <Form method="post">
-          <Heading>Login</Heading>
+          <Heading>Cadastre-se</Heading>
           <FormInput
             id="email"
             label="E-mail"
@@ -39,20 +39,14 @@ const SignUp = () => {
             type="password"
             placeholder="Digite sua senha"
           />
-          <Button type="submit">Entrar</Button>
-          <FlexContainer
-            justifyContent="space-between"
-            alignItems="center"
-            gap={{
-              row: 'var(--size-1)',
-              col: 'var(--size-1)'
-            }}
-            width="var(--size-full)"
-            maxWidth="var(--resolution-480)"
-          >
-            <Anchor path="sign-up">Não tem uma conta? Cadastre-se!</Anchor>
-            <Anchor path="forgot-password">Esqueceu sua senha?</Anchor>
-          </FlexContainer>
+          <FormInput
+            id="confirm-password"
+            label="Confirme sua Senha"
+            type="password"
+            placeholder="Confirme sua senha"
+          />
+          <Button type="submit">Cadastre-se</Button>
+          <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
         </Form>
       </FlexContainer>
     </>
