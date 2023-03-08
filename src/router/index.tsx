@@ -5,6 +5,7 @@ import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
 
 import { ThemesProvider } from '../context/ThemesProvider';
+import SignUp from '../pages/SignUp';
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const routes = createBrowserRouter([
           {
             index: true,
             element: <Login />
+          },
+          {
+            path: '/sign-up',
+            element: <SignUp />
           }
         ]
       }
