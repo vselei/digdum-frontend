@@ -53,7 +53,7 @@ const Layout = () => {
           body {
             font-family: 'Montserrat', sans-serif;
             min-height: var(--h-100);
-            background: linear-gradient(to right, #ffffff, var(--secondary-color));
+            background: var(--secondary-color);
           }
 
           h1,
