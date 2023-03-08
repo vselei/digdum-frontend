@@ -2,7 +2,8 @@ import { Global, css } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-import icon from '/img/favicon.svg'
+import icon from '/img/favicon.svg';
+import { ThemesProvider } from '../context/ThemesProvider';
 
 const Layout = () => {
   return (
@@ -12,7 +13,7 @@ const Layout = () => {
           :root {
             /* colors */
             --color-white: #f4f4f4;
-            
+
             --color-blue-900: #050119;
 
             /* sizes */
@@ -26,7 +27,7 @@ const Layout = () => {
 
             /* vh */
             --h-100: 100vh;
-            
+
             /* resolutions */
             --resolution-480: 48rem;
 
@@ -35,7 +36,7 @@ const Layout = () => {
 
             /* animations */
             --animation-300: 300ms;
-          } 
+          }
 
           html {
             box-sizing: border-box;
@@ -107,16 +108,22 @@ const Layout = () => {
 
       <HelmetProvider>
         <Helmet>
-          <meta name='author' content='Victor Seleimend' />
+          <meta name="author" content="Victor Seleimend" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
           <link rel="icon" href={icon} type="image/svg+xml" />
         </Helmet>
-        <Outlet />
+        <ThemesProvider>
+          <Outlet />
+        </ThemesProvider>
       </HelmetProvider>
     </>
   );
