@@ -1,4 +1,4 @@
-import { Form } from 'react-router-dom';
+import { Form, useActionData, ActionFunctionArgs } from 'react-router-dom';
 
 import Head from '../components/Head';
 import FormInput from '../components/FormInput';
@@ -7,53 +7,21 @@ import Button from '../components/Button';
 import Anchor from '../components/Anchor';
 import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
-import { useState } from 'react';
 
-const signUpSteps = [
-  [
-    {
-      id: 'email',
-      label: 'E-mail',
-      type: 'email',
-      placeholder: 'Digite seu e-mail'
-    }
-  ],
-  [
-    {
-      id: 'password',
-      label: 'Senha',
-      type: 'password',
-      placeholder: 'Digite sua senha'
-    },
-    {
-      id: 'confirm-password',
-      label: 'Confirme sua Senha',
-      type: 'password',
-      placeholder: 'Confirme sua senha'
-    }
-  ],
-  [
-    {
-      id: 'complete-name',
-      label: 'Nome Completo',
-      type: 'text',
-      placeholder: 'Digite seu nome completo'
-    },
-    {
-      id: 'username',
-      label: 'Username',
-      type: 'text',
-      placeholder: 'Digite seu nome de usuário'
-    }
-  ]
-];
+import signUpSteps from '../utilities/signUpSteps';
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const form = await request.formData();
+
+  const steps = form.get('steps');
+
+  return {
+    steps
+  };
+};
 
 const SignUp = () => {
-  const [steps, setSteps] = useState(0);
-
-  const handleIncreaseSteps = () => {
-    setSteps(steps + 1);
-  };
+  const steps = 0;
 
   return (
     <>
@@ -82,6 +50,7 @@ const SignUp = () => {
               placeholder={step.placeholder}
             />
           ))}
+          <input type="hidden" name="steps" value={steps || 0} />
           <Button type="submit">
             {steps < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
           </Button>
