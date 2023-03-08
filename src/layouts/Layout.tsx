@@ -31,6 +31,7 @@ const Layout = () => {
             --h-100: 100vh;
 
             /* resolutions */
+            --resolution-240: 24rem;
             --resolution-480: 48rem;
 
             /* weights */

@@ -30,7 +30,7 @@ const SignUp = () => {
         gap={{
           col: 'var(--size-3)'
         }}
-        flex="1 1 24rem"
+        flex="1 1 var(--resolution-240)"
         minHeight="var(--h-100)"
       >
         <Logo />
