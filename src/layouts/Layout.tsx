@@ -58,7 +58,7 @@ const Layout = () => {
             font-family: 'Montserrat', sans-serif;
             min-height: var(--h-100);
             background: ${theme === 'dark'
-              ? 'linear-gradient(to right, #030114, #050119)'
+              ? 'linear-gradient(to right, #030114, var(--secondary-color))'
               : 'linear-gradient(to right, #ffffff, var(--secondary-color))'};
           }
 
