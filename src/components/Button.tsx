@@ -6,9 +6,8 @@ const Button = styled.button`
   color: var(--color-white);
   background-color: var(--color-blue-900);
   width: var(--size-full);
-  max-width: var(--resolution-480);
   padding: var(--size-1-2);
-  margin-bottom: var(--size-1);
+  margin-bottom: var(--size-1-2);
   border: 1px solid var(--color-blue-900);
   border-radius: var(--size-1);
   font-size: var(--size-1);
@@ -21,6 +20,10 @@ const Button = styled.button`
   &:hover {
     color: var(--color-blue-900);
     background-color: var(--color-white);
+  }
+
+  @media (min-width: 128rem) {
+    max-width: var(--resolution-480);
   }
 `;
 

@@ -5,6 +5,7 @@ const FlexContainer = ({
   justifyContent,
   alignItems,
   gap,
+  flex,
   width,
   maxWidth,
   minHeight
@@ -16,6 +17,7 @@ const FlexContainer = ({
     row?: string;
     col?: string;
   };
+  flex?: string;
   width?: string;
   maxWidth?: string;
   minHeight?: string;
@@ -25,10 +27,18 @@ const FlexContainer = ({
     justify-content: ${justifyContent || 'flex-start'};
     align-items: ${alignItems || 'flex-start'};
     gap: ${gap?.row || '0'} ${gap?.col || '0'};
+    flex-wrap: wrap;
 
     width: ${width || 'auto'};
-    max-width: ${maxWidth || 'auto'};
     min-height: ${minHeight || 'auto'};
+
+    & > * {
+      flex: ${flex || 'initial'};
+    }
+
+    @media (min-width: 128rem) {
+      max-width: ${maxWidth || 'auto'};
+    }
   `;
 
   return <Flex>{children}</Flex>;

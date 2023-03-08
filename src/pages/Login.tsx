@@ -23,22 +23,15 @@ const Login = () => {
         gap={{
           col: 'var(--size-3)'
         }}
+        flex="1 1 24rem"
         minHeight="var(--h-100)"
       >
         <Logo
           src={WhiteLogo}
           alt="Logo DigDum: Um panda branco e azul escuro, segurando um celular"
           width={480}
-          style={{
-            flex: 1
-          }}
         />
-        <Form
-          method="post"
-          style={{
-            flex: 1
-          }}
-        >
+        <Form method="post">
           <Heading>Login</Heading>
           <FormInput
             id="email"
@@ -56,6 +49,10 @@ const Login = () => {
           <FlexContainer
             justifyContent="space-between"
             alignItems="center"
+            gap={{
+              row: 'var(--size-1)',
+              col: 'var(--size-1)'
+            }}
             width="var(--size-full)"
             maxWidth="var(--resolution-480)"
           >
