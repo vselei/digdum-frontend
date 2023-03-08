@@ -3,10 +3,10 @@ import useThemes from '../hooks/useThemes';
 
 const ChangeThemeButton = styled.div`
   cursor: pointer;
-  border: 1px solid var(--color-blue-900);
+  border: 1px solid var(--primary-color);
   padding: var(--size-1);
-  color: var(--color-white);
-  background-color: var(--color-blue-900);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
   border-radius: var(--size-1);
 
   & > svg {

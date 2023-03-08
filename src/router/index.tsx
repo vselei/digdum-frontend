@@ -4,10 +4,16 @@ import Layout from '../layouts/Layout';
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
 
+import { ThemesProvider } from '../context/ThemesProvider';
+
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <ThemesProvider>
+        <Layout />
+      </ThemesProvider>
+    ),
     children: [
       {
         path: '/',

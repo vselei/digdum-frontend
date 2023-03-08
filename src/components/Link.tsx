@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 const Link = styled.a`
-  color: var(--color-blue-900);
-  text-decoration: underline var(--color-blue-900);
+  color: var(--primary-color);
+  text-decoration: underline var(--primary-color);
   font-size: var(--size-1);
   font-weight: var(--weight-700);
   text-transform: uppercase;

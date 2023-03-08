@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import icon from '/img/favicon.svg';
-import { ThemesProvider } from '../context/ThemesProvider';
 
 const Layout = () => {
   return (
@@ -12,9 +11,8 @@ const Layout = () => {
         styles={css`
           :root {
             /* colors */
-            --color-white: #f4f4f4;
-
-            --color-blue-900: #050119;
+            --primary-color: #050119;
+            --secondary-color: #f4f4f4;
 
             /* sizes */
             --size-1: 1rem;
@@ -55,7 +53,7 @@ const Layout = () => {
           body {
             font-family: 'Montserrat', sans-serif;
             min-height: var(--h-100);
-            background: linear-gradient(to right, #ffffff, var(--color-white));
+            background: linear-gradient(to right, #ffffff, var(--secondary-color));
           }
 
           h1,
@@ -121,9 +119,7 @@ const Layout = () => {
           />
           <link rel="icon" href={icon} type="image/svg+xml" />
         </Helmet>
-        <ThemesProvider>
           <Outlet />
-        </ThemesProvider>
       </HelmetProvider>
     </>
   );

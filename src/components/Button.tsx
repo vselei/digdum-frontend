@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 const Button = styled.button`
   display: block;
   cursor: pointer;
-  color: var(--color-white);
-  background-color: var(--color-blue-900);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
   width: var(--size-full);
   padding: var(--size-1-2);
   margin-bottom: var(--size-1-2);
-  border: 1px solid var(--color-blue-900);
+  border: 1px solid var(--primary-color);
   border-radius: var(--size-1);
   font-size: var(--size-1);
   font-weight: var(--weight-700);
@@ -18,8 +18,8 @@ const Button = styled.button`
   transition: var(--animation-300);
 
   &:hover {
-    color: var(--color-blue-900);
-    background-color: var(--color-white);
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
   }
 
   @media (min-width: 128rem) {
