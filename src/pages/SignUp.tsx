@@ -31,6 +31,28 @@ const signUpSteps = [
       type: 'password',
       placeholder: 'Confirme sua senha'
     }
+  ],
+  [
+    {
+      id: 'complete-name',
+      label: 'Nome Completo',
+      type: 'text',
+      placeholder: 'Digite seu nome completo'
+    },
+    {
+      id: 'username',
+      label: 'Username',
+      type: 'text',
+      placeholder: 'Digite seu nome de usuário'
+    }
+  ],
+  [
+    {
+      id: 'tel',
+      label: 'N° de Telefone',
+      type: 'tel',
+      placeholder: 'Digite seu número de telefone'
+    }
   ]
 ];
 
@@ -39,7 +61,7 @@ const SignUp = () => {
 
   const handleIncreaseSteps = () => {
     setSteps(steps + 1);
-  }
+  };
 
   return (
     <>
@@ -69,7 +91,9 @@ const SignUp = () => {
             />
           ))}
           {steps < signUpSteps.length - 1 ? (
-            <Button type="button" onClick={handleIncreaseSteps}>Próximo</Button>
+            <Button type="button" onClick={handleIncreaseSteps}>
+              Próximo
+            </Button>
           ) : (
             <Button type="submit">Cadastre-se</Button>
           )}
