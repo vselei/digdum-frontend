@@ -2,12 +2,14 @@ import { useState, createContext } from 'react';
 
 const ThemesContext = createContext({
   handleThemeChanges: () => {},
-  theme: 'dark'
+  theme: window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light'
 });
 
 const ThemesProvider = ({ children }: { children: React.ReactElement }) => {
   const [theme, setTheme] = useState(
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'false'
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   );
 
   const handleThemeChanges = () => {
