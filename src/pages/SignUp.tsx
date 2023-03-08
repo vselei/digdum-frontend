@@ -82,13 +82,9 @@ const SignUp = () => {
               placeholder={step.placeholder}
             />
           ))}
-          {steps < signUpSteps.length - 1 ? (
-            <Button type="button" onClick={handleIncreaseSteps}>
-              Próximo
-            </Button>
-          ) : (
-            <Button type="submit">Cadastre-se</Button>
-          )}
+          <Button type="submit">
+            {steps < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
+          </Button>
           <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
         </Form>
       </FlexContainer>
