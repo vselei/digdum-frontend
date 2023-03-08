@@ -45,14 +45,6 @@ const signUpSteps = [
       type: 'text',
       placeholder: 'Digite seu nome de usuário'
     }
-  ],
-  [
-    {
-      id: 'tel',
-      label: 'N° de Telefone',
-      type: 'tel',
-      placeholder: 'Digite seu número de telefone'
-    }
   ]
 ];
 
