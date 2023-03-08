@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import Anchor from '../components/Anchor';
 import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
+import { useState } from 'react';
 
 const signUpSteps = [
   [
@@ -34,6 +35,12 @@ const signUpSteps = [
 ];
 
 const SignUp = () => {
+  const [steps, setSteps] = useState(0);
+
+  const handleIncreaseSteps = () => {
+    setSteps(steps + 1);
+  }
+
   return (
     <>
       <Head
@@ -52,7 +59,7 @@ const SignUp = () => {
         <Logo />
         <Form method="post">
           <Heading>Cadastre-se</Heading>
-          {signUpSteps[0].map(step => (
+          {signUpSteps[steps].map(step => (
             <FormInput
               key={step.id}
               id={step.id}
@@ -61,7 +68,11 @@ const SignUp = () => {
               placeholder={step.placeholder}
             />
           ))}
-          <Button type="submit">Cadastre-se</Button>
+          {steps < signUpSteps.length - 1 ? (
+            <Button type="button" onClick={handleIncreaseSteps}>Próximo</Button>
+          ) : (
+            <Button type="submit">Cadastre-se</Button>
+          )}
           <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
         </Form>
       </FlexContainer>
