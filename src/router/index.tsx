@@ -3,10 +3,10 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
+import SignUp, { action as signUpAction } from '../pages/SignUp';
 import ForgotPassword from '../pages/ForgotPassword';
 
 import { ThemesProvider } from '../context/ThemesProvider';
-import SignUp from '../pages/SignUp';
 
 const routes = createBrowserRouter([
   {
@@ -27,7 +27,8 @@ const routes = createBrowserRouter([
           },
           {
             path: '/sign-up',
-            element: <SignUp />
+            element: <SignUp />,
+            action: signUpAction
           },
           {
             path: '/forgot-password',

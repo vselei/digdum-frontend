@@ -1,4 +1,5 @@
-import { Form } from 'react-router-dom';
+import { ActionFunctionArgs, Form } from 'react-router-dom';
+import { useState } from 'react';
 
 import Head from '../components/Head';
 import FormInput from '../components/FormInput';
@@ -9,7 +10,15 @@ import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
 
 import signUpSteps from '../utilities/signUpSteps';
-import { useState } from 'react';
+import storingInputData from '../utilities/storingInputData';
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData();
+
+  storingInputData(formData);
+
+  return null;
+};
 
 const SignUp = () => {
   const [steps, setSteps] = useState(0);
