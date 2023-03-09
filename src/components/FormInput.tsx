@@ -6,17 +6,27 @@ const FormInput = ({
   id,
   label,
   type,
-  placeholder
+  placeholder,
+  defaultValue
 }: {
   id: string;
   label: string;
   type: string;
-  placeholder?: string;
+  placeholder: string;
+  defaultValue: string;
 }) => {
+  // TODO: Ver senha ao clicar no olho
+
   return (
     <FormControl>
       <Label htmlFor={id}>{label}</Label>
-      <Input type={type} placeholder={placeholder || ''} id={id} name={id} />
+      <Input
+        type={type}
+        placeholder={placeholder}
+        defaultValue={defaultValue}
+        id={id}
+        name={id}
+      />
     </FormControl>
   );
 };

@@ -1,8 +1,10 @@
 import {
   ActionFunctionArgs,
+  LoaderFunctionArgs,
   Form,
   redirect,
-  useParams
+  useParams,
+  useLoaderData
 } from 'react-router-dom';
 
 import Head from '../components/Head';
@@ -18,6 +20,7 @@ import storingInputData from '../utilities/storingInputData';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
+  // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
 
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
@@ -35,11 +38,30 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
   return redirect(`/sign-up/${stepCount + 1}`);
 };
 
+export const loader = ({ params }: LoaderFunctionArgs) => {
+  const { steps } = params;
+  const stepCount = parseInt(steps!);
+
+  const lsName = 'UserSignUpData';
+  const userSignUpDataParsed = JSON.parse(localStorage.getItem(lsName) || '{}');
+
+  if (stepCount !== 3) {
+    return '';
+  }
+
+  const usernameGen = userSignUpDataParsed['complete-name'].toLowerCase();
+
+  return usernameGen;
+};
+
 const SignUp = () => {
+  const defaultValue = useLoaderData() as string;
+
   const { steps } = useParams();
   const stepCount = parseInt(steps!);
 
   // TODO: Data de nascimento
+  // TODO: Gerar username
 
   return (
     <>
@@ -72,6 +94,7 @@ const SignUp = () => {
                   label={step.label}
                   type={step.type}
                   placeholder={step.placeholder}
+                  defaultValue={defaultValue}
                 />
               ))}
               <Button type="submit">
@@ -87,6 +110,7 @@ const SignUp = () => {
                 label="Valide seu e-mail"
                 type="tel"
                 placeholder="Verifique sua caixa de mensagens"
+                defaultValue={defaultValue}
               />
               <Button type="submit">Validar e-mail</Button>
               <Anchor path={`/bamboo-forest`}>Validar mais tarde</Anchor>

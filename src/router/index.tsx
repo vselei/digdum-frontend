@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
-import SignUp, { action as signUpAction } from '../pages/SignUp';
+import SignUp, { action as signUpAction, loader as signUpLoader } from '../pages/SignUp';
 import ForgotPassword from '../pages/ForgotPassword';
 
 import { ThemesProvider } from '../context/ThemesProvider';
@@ -28,7 +28,8 @@ const routes = createBrowserRouter([
           {
             path: '/sign-up/:steps',
             element: <SignUp />,
-            action: signUpAction
+            action: signUpAction,
+            loader: signUpLoader
           },
           {
             path: '/forgot-password',
