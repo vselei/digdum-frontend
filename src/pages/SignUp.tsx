@@ -18,6 +18,7 @@ import Heading from '../components/Heading';
 import signUpSteps from '../utilities/signUpSteps';
 import storingInputData from '../utilities/storingInputData';
 import getDataFromLS from '../utilities/getDataFromLS';
+import usernameGenerator from '../utilities/usernameGenerator';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
@@ -50,7 +51,7 @@ export const loader = ({ params }: LoaderFunctionArgs) => {
     return '';
   }
 
-  const usernameGen = userSignUpDataParsed['complete-name'].toLowerCase();
+  const usernameGen = usernameGenerator(userSignUpDataParsed['complete-name']);
 
   return usernameGen;
 };
