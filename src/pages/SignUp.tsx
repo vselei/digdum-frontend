@@ -1,5 +1,9 @@
-import { ActionFunctionArgs, Form } from 'react-router-dom';
-import { useState } from 'react';
+import {
+  ActionFunctionArgs,
+  Form,
+  redirect,
+  useParams
+} from 'react-router-dom';
 
 import Head from '../components/Head';
 import FormInput from '../components/FormInput';
@@ -12,22 +16,22 @@ import Heading from '../components/Heading';
 import signUpSteps from '../utilities/signUpSteps';
 import storingInputData from '../utilities/storingInputData';
 
-export const action = async ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request, params }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
+
+  const { steps } = params;
+  const stepCount = parseInt(steps!);
 
   const lsName = 'UserSignUpData';
   storingInputData(lsName, inputs);
 
-  return null;
+  return redirect(`/sign-up/${stepCount + 1}`);
 };
 
 const SignUp = () => {
-  const [steps, setSteps] = useState(0);
-
-  const handleIncreaseSteps = () => {
-    setSteps(steps + 1);
-  };
+  const { steps } = useParams();
+  const stepCount = parseInt(steps!);
 
   return (
     <>
@@ -45,10 +49,10 @@ const SignUp = () => {
         minHeight="var(--h-100)"
       >
         <Logo />
-        <Form method="post" onSubmit={handleIncreaseSteps}>
+        <Form method="post">
           <Heading>Cadastre-se</Heading>
           {signUpSteps[
-            steps < signUpSteps.length ? steps : signUpSteps.length - 1
+            stepCount < signUpSteps.length ? stepCount : signUpSteps.length - 1
           ].map(step => (
             <FormInput
               key={step.id}
@@ -59,7 +63,7 @@ const SignUp = () => {
             />
           ))}
           <Button type="submit">
-            {steps < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
+            {stepCount < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
           </Button>
           <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
         </Form>

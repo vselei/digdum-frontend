@@ -50,7 +50,7 @@ const Login = () => {
             width="var(--size-full)"
             maxWidth="var(--resolution-480)"
           >
-            <Anchor path="/sign-up">Não tem uma conta? Cadastre-se!</Anchor>
+            <Anchor path="/sign-up/0">Não tem uma conta? Cadastre-se!</Anchor>
             <Anchor path="/forgot-password">Esqueceu sua senha?</Anchor>
           </FlexContainer>
         </Form>
