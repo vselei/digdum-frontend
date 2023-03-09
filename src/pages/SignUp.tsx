@@ -14,8 +14,10 @@ import storingInputData from '../utilities/storingInputData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
+  const inputs = Object.fromEntries(formData);
 
-  storingInputData(formData);
+  const lsName = 'UserSignUpData';
+  storingInputData(lsName, inputs);
 
   return null;
 };
