@@ -28,7 +28,13 @@ const usernameGenerator = (name: string) => {
       `${splittedName[splittedName.length - 1]}${splittedName[0][0]}`,
       `${splittedName[splittedName.length - 1]}${randNumber(0, 1000)}`,
       `_${splittedName[splittedName.length - 1]}${randNumber(0, 1000)}`,
-      `${splittedName[splittedName.length - 1]}${randNumber(0, 1000)}_`
+      `${splittedName[splittedName.length - 1]}${randNumber(0, 1000)}_`,
+      `${splittedName.join('-')}${randNumber(0, 1000)}`,
+      `${splittedName.join('.')}${randNumber(0, 1000)}`,
+      `${splittedName.join('_')}${randNumber(0, 1000)}`,
+      `${splittedName.reverse().join('-')}${randNumber(0, 1000)}`,
+      `${splittedName.reverse().join('.')}${randNumber(0, 1000)}`,
+      `${splittedName.reverse().join('_')}${randNumber(0, 1000)}`
     ];
   }
 
