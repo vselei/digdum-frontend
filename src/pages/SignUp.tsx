@@ -62,9 +62,6 @@ const SignUp = () => {
   const { steps } = useParams();
   const stepCount = parseInt(steps!);
 
-  // TODO: Data de nascimento
-  // TODO: Gerar username
-
   return (
     <>
       <Head
