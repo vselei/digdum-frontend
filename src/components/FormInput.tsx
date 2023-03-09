@@ -1,6 +1,10 @@
+import styled from '@emotion/styled';
 import Input from '../components/Input';
 import Label from '../components/Label';
+import FlexContainer from './FlexContainer';
 import FormControl from './FormControl';
+
+const IconButton = styled.button``;
 
 const FormInput = ({
   id,
@@ -19,7 +23,10 @@ const FormInput = ({
 
   return (
     <FormControl>
-      <Label htmlFor={id}>{label}</Label>
+      <FlexContainer>
+        <Label htmlFor={id}>{label}</Label>
+        <IconButton>Hello</IconButton>
+      </FlexContainer>
       <Input
         type={type}
         placeholder={placeholder}
