@@ -26,7 +26,7 @@ const ForgotPassword = () => {
       >
         <Logo />
         <Form method="post">
-          <Heading>Esqueceu Sua Senha</Heading>
+          <Heading>Esqueceu Sua Senha?</Heading>
           <FormInput
             id="email"
             label="E-mail"
@@ -44,8 +44,8 @@ const ForgotPassword = () => {
             width="var(--size-full)"
             maxWidth="var(--resolution-480)"
           >
-            <Anchor path="sign-up">Não tem uma conta? Cadastre-se!</Anchor>
-            <Anchor path="login">Já possui uma conta? Faça seu Login</Anchor>
+            <Anchor path="/sign-up">Não tem uma conta? Cadastre-se!</Anchor>
+            <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
           </FlexContainer>
         </Form>
       </FlexContainer>
