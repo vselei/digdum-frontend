@@ -17,6 +17,7 @@ import Heading from '../components/Heading';
 
 import signUpSteps from '../utilities/signUpSteps';
 import storingInputData from '../utilities/storingInputData';
+import getDataFromLS from '../utilities/getDataFromLS';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
@@ -43,7 +44,7 @@ export const loader = ({ params }: LoaderFunctionArgs) => {
   const stepCount = parseInt(steps!);
 
   const lsName = 'UserSignUpData';
-  const userSignUpDataParsed = JSON.parse(localStorage.getItem(lsName) || '{}');
+  const userSignUpDataParsed = getDataFromLS(lsName, '{}');
 
   if (stepCount !== 3) {
     return '';
