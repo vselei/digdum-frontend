@@ -18,7 +18,7 @@ import storingInputData from '../utilities/storingInputData';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
- 
+
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
@@ -27,8 +27,6 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
 
   const { steps } = params;
   const stepCount = parseInt(steps!);
-
-  console.log(inputs);
 
   if (stepCount >= signUpSteps.length) {
     return redirect('/bamboo-forest');
@@ -90,19 +88,8 @@ const SignUp = () => {
                 type="tel"
                 placeholder="Verifique sua caixa de mensagens"
               />
-              <FlexContainer
-                justifyContent="space-between"
-                alignItems="flex-start"
-                gap={{
-                  col: 'var(--size-3)'
-                }}
-                flex="1 1 var(--resolution-240)"
-              >
-                <Anchor path={`/bamboo-forest`}>
-                  Validar mais tarde
-                </Anchor>
-                <Button type="submit">Validar e-mail</Button>
-              </FlexContainer>
+              <Button type="submit">Validar e-mail</Button>
+              <Anchor path={`/bamboo-forest`}>Validar mais tarde</Anchor>
             </>
           )}
         </Form>
