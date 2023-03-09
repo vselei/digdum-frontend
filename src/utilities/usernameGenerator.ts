@@ -7,7 +7,9 @@ const usernameGenerator = (name: string) => {
     lowerCaseName,
     `${lowerCaseName}_`,
     `_${lowerCaseName}`,
-    `${lowerCaseName}${randNumber(0, 1000)}`
+    `${lowerCaseName}${randNumber(0, 1000)}`,
+    `_${lowerCaseName}${randNumber(0, 1000)}`,
+    `${lowerCaseName}${randNumber(0, 1000)}_`
   ];
 
   if (lowerCaseName.trim().includes(' ')) {
