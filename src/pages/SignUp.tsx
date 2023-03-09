@@ -23,7 +23,6 @@ import usernameGenerator from '../utilities/usernameGenerator';
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
-  // TODO: Botão para gerar user aleatório
 
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
