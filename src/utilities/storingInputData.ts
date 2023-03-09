@@ -15,6 +15,8 @@ const storingInputData = (
       })
     );
   }
+
+  // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
 };
 
 export default storingInputData;

@@ -17,14 +17,22 @@ import signUpSteps from '../utilities/signUpSteps';
 import storingInputData from '../utilities/storingInputData';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
+  // TODO: Página 404 quando a rota não existir
+ 
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
+
+  const lsName = 'UserSignUpData';
+  storingInputData(lsName, inputs);
 
   const { steps } = params;
   const stepCount = parseInt(steps!);
 
-  const lsName = 'UserSignUpData';
-  storingInputData(lsName, inputs);
+  console.log(inputs);
+
+  if (stepCount >= signUpSteps.length) {
+    return redirect('/bamboo-forest');
+  }
 
   return redirect(`/sign-up/${stepCount + 1}`);
 };
@@ -32,6 +40,8 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
 const SignUp = () => {
   const { steps } = useParams();
   const stepCount = parseInt(steps!);
+
+  // TODO: Data de nascimento
 
   return (
     <>
@@ -51,21 +61,50 @@ const SignUp = () => {
         <Logo />
         <Form method="post">
           <Heading>Cadastre-se</Heading>
-          {signUpSteps[
-            stepCount < signUpSteps.length ? stepCount : signUpSteps.length - 1
-          ].map(step => (
-            <FormInput
-              key={step.id}
-              id={step.id}
-              label={step.label}
-              type={step.type}
-              placeholder={step.placeholder}
-            />
-          ))}
-          <Button type="submit">
-            {stepCount < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
-          </Button>
-          <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
+          {stepCount <= signUpSteps.length - 1 ? (
+            <>
+              {signUpSteps[
+                stepCount < signUpSteps.length
+                  ? stepCount
+                  : signUpSteps.length - 1
+              ].map(step => (
+                <FormInput
+                  key={step.id}
+                  id={step.id}
+                  label={step.label}
+                  type={step.type}
+                  placeholder={step.placeholder}
+                />
+              ))}
+              <Button type="submit">
+                {stepCount < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
+              </Button>
+              <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
+            </>
+          ) : (
+            <>
+              <FormInput
+                key="email-validation"
+                id="email-validation"
+                label="Valide seu e-mail"
+                type="tel"
+                placeholder="Verifique sua caixa de mensagens"
+              />
+              <FlexContainer
+                justifyContent="space-between"
+                alignItems="flex-start"
+                gap={{
+                  col: 'var(--size-3)'
+                }}
+                flex="1 1 var(--resolution-240)"
+              >
+                <Anchor path={`/bamboo-forest`}>
+                  Validar mais tarde
+                </Anchor>
+                <Button type="submit">Validar e-mail</Button>
+              </FlexContainer>
+            </>
+          )}
         </Form>
       </FlexContainer>
     </>
