@@ -32,7 +32,7 @@ const signUpSteps = [
       id: 'born-date',
       label: 'Data de nascimento',
       type: 'text',
-      placeholder: 'data de nascimento (DD/MM/AAAA)'
+      placeholder: 'Data de nascimento (DD/MM/AAAA)'
     }
   ],
   [
