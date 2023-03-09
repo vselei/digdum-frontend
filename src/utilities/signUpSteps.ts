@@ -29,6 +29,14 @@ const signUpSteps = [
       placeholder: 'Digite seu nome completo'
     },
     {
+      id: 'born-date',
+      label: 'Data de nascimento',
+      type: 'text',
+      placeholder: 'Digite sua data de nascimento'
+    }
+  ],
+  [
+    {
       id: 'username',
       label: 'Username',
       type: 'text',
