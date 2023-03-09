@@ -1,24 +1,12 @@
-import styled from '@emotion/styled';
 import useThemes from '../hooks/useThemes';
 
-const ChangeThemeButton = styled.div`
-  cursor: pointer;
-  border: 1px solid var(--primary-color);
-  padding: var(--size-1);
-  color: var(--secondary-color);
-  background-color: var(--primary-color);
-  border-radius: var(--size-1);
-
-  & > svg {
-    width: var(--size-2);
-  }
-`;
+import ButtonWithIcon from './ButtonWithIcon';
 
 const ChangeTheme = () => {
   const { handleThemeChanges, theme } = useThemes();
 
   return (
-    <ChangeThemeButton onClick={handleThemeChanges}>
+    <ButtonWithIcon onClick={handleThemeChanges}>
       {theme === 'dark' ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +37,7 @@ const ChangeTheme = () => {
           />
         </svg>
       )}
-    </ChangeThemeButton>
+    </ButtonWithIcon>
   );
 };
 
