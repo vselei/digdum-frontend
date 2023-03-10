@@ -35,19 +35,16 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const inputs = Object.fromEntries(formData);
 
   const {
-    isValid,
-    type,
-    message,
+    isEmpty,
     emailValidation,
-    passwordValidation,
     passwordLength,
     passwordMatch
   } = InputValidation(inputs);
 
-  if (!isValid) {
+  if (isEmpty) {
     return {
-      type,
-      message
+      type: AlertType.Error,
+      message: 'Todos os campos são obrigatórios'
     };
   }
 
@@ -56,14 +53,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       type: AlertType.Error,
       message: 'Formato de e-mail incorreto'
     };
-  }
-
-  const passwordHasError = passwordValidation!(inputs.password)
-  if (inputs.password && passwordHasError?.message) {
-    return {
-      type: AlertType.Error,
-      message: passwordHasError.message
-    }
   }
 
   if (inputs.password && !passwordLength!(inputs.password)) {
@@ -102,13 +91,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
   const userSignUpDataParsed = getDataFromLS(LS_NAME, '{}');
 
-  if (step !== 3) {
-    return '';
-  }
-
-  const usernameGen = usernameGenerator(userSignUpDataParsed['complete-name']);
-
-  return usernameGen;
+  return 'hello';
 };
 
 const SignUp = () => {
