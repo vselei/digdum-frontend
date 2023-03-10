@@ -28,6 +28,8 @@ import { useEffect } from 'react';
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
+  // TODO: Mudar para query string
+  // TODO: Validar
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 

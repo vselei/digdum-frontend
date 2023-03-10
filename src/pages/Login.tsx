@@ -9,6 +9,8 @@ import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
 
 const Login = () => {
+  // TODO: Validar
+
   return (
     <>
       <Head

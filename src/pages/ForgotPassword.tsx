@@ -9,6 +9,8 @@ import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
 
 const ForgotPassword = () => {
+  // TODO: Validar
+
   return (
     <>
       <Head
