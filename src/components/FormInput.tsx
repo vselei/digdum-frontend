@@ -1,11 +1,19 @@
+import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import Input from '../components/Input';
 import Label from '../components/Label';
 import FlexContainer from './FlexContainer';
 import FormControl from './FormControl';
-import IconButton from './IconButton';
+
+const IconButton = styled.button`
+  cursor: pointer;
+  color: var(--primary-color);
+
+  & > svg {
+    width: var(--size-1-2);
+  }
+`;
 
 const FormInput = ({
   id,
@@ -36,7 +44,7 @@ const FormInput = ({
       >
         <Label htmlFor={id}>{label}</Label>
         {id === 'password' || id === 'confirm-password' ? (
-          <IconButton type="button" onClickHandler={handlePasswordVisibility}>
+          <IconButton type="button" onClick={handlePasswordVisibility}>
             {passwordIsVisible ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +83,7 @@ const FormInput = ({
             )}
           </IconButton>
         ) : id === 'username' ? (
-          <IconButton type="button" onClickHandler={() => navigate('/sign-up/3')}>
+          <IconButton type="button" onClick={() => navigate('/sign-up/3')}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
