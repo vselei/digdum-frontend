@@ -107,7 +107,7 @@ const SignUp = () => {
         minHeight="var(--h-100)"
       >
         <Logo />
-        <Form method="post">
+        <Form method="post" noValidate>
           <Heading>Cadastre-se</Heading>
           {stepCount <= signUpSteps.length - 1 ? (
             <>

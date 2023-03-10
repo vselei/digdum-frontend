@@ -25,19 +25,21 @@ const Login = () => {
         minHeight="var(--h-100)"
       >
         <Logo />
-        <Form method="post">
+        <Form method="post" noValidate>
           <Heading>Login</Heading>
           <FormInput
             id="email"
             label="E-mail"
             type="email"
             placeholder="Digite seu e-mail"
+            defaultValue=''
           />
           <FormInput
             id="password"
             label="Senha"
             type="password"
             placeholder="Digite sua senha"
+            defaultValue=''
           />
           <Button type="submit">Entrar</Button>
           <FlexContainer

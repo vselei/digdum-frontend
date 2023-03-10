@@ -25,13 +25,14 @@ const ForgotPassword = () => {
         minHeight="var(--h-100)"
       >
         <Logo />
-        <Form method="post">
+        <Form method="post" noValidate>
           <Heading>Esqueceu Sua Senha?</Heading>
           <FormInput
             id="email"
             label="E-mail"
             type="email"
             placeholder="Digite seu e-mail"
+            defaultValue=''
           />
           <Button type="submit">Recuperar Conta</Button>
           <FlexContainer
