@@ -34,12 +34,53 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
-  const { isValid, type, message } = InputValidation(inputs);
+  const {
+    isValid,
+    type,
+    message,
+    emailValidation,
+    passwordValidation,
+    passwordLength,
+    passwordMatch
+  } = InputValidation(inputs);
 
   if (!isValid) {
     return {
       type,
       message
+    };
+  }
+
+  if (inputs.email && !emailValidation!(inputs.email)) {
+    return {
+      type: AlertType.Error,
+      message: 'Formato de e-mail incorreto'
+    };
+  }
+
+  const passwordHasError = passwordValidation!(inputs.password)
+  if (inputs.password && passwordHasError?.message) {
+    return {
+      type: AlertType.Error,
+      message: passwordHasError.message
+    }
+  }
+
+  if (inputs.password && !passwordLength!(inputs.password)) {
+    return {
+      type: AlertType.Error,
+      message: 'A senha tem que ter no mínimo 8 caracteres'
+    };
+  }
+
+  if (
+    inputs.password &&
+    inputs['confirm-password'] &&
+    !passwordMatch!(inputs.password, inputs['confirm-password'])
+  ) {
+    return {
+      type: AlertType.Error,
+      message: 'As senhas não são iguais'
     };
   }
 
