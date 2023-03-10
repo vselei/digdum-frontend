@@ -5,9 +5,12 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import useThemes from '../hooks/useThemes';
 
 import icon from '/img/favicon.svg';
+import useAlert from '../hooks/useAlert';
+import Alert from '../components/Alert';
 
 const Layout = () => {
   const { theme } = useThemes();
+  const { alert } = useAlert();
 
   return (
     <>
@@ -126,6 +129,9 @@ const Layout = () => {
           />
           <link rel="icon" href={icon} type="image/svg+xml" />
         </Helmet>
+        {alert.message && <Alert type={alert.type}>
+          {alert.message}
+        </Alert>}
         <Outlet />
       </HelmetProvider>
     </>

@@ -22,7 +22,8 @@ import getDataFromLS from '../utilities/getDataFromLS';
 import usernameGenerator from '../utilities/usernameGenerator';
 import InputValidation from '../utilities/InputValidation';
 import AlertType from '../utilities/AlertEnum';
-import Alert from '../components/Alert';
+import useAlert from '../hooks/useAlert';
+import { useEffect } from 'react';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
@@ -79,6 +80,16 @@ const SignUp = () => {
 
   const { steps } = useParams();
   const stepCount = parseInt(steps!);
+
+  const { showAlert } = useAlert();
+  useEffect(() => {
+    if (actionData?.message) {
+      showAlert({
+        message: actionData.message,
+        type: actionData.type
+      });
+    }
+  }, [actionData]);
 
   return (
     <>
