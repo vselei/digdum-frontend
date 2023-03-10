@@ -5,7 +5,7 @@ import AlertType from '../utilities/AlertEnum';
 
 const ProgressBarStyles = styled.div`
   height: 4px;
-  background-color: var(--primary-color);
+  background-color: var(--white-color);
   animation: fillSize 5s forwards 1 linear;
 
   @keyframes fillSize {
