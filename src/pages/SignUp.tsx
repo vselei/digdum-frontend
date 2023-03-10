@@ -28,7 +28,6 @@ import { useEffect } from 'react';
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
-  // TODO: Mudar para query string
   // TODO: Validar
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
@@ -55,7 +54,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   return redirect(`/sign-up?step=${step + 1}`);
 };
 
-export const loader = ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const step = parseInt(searchParams.get('step')!) || 0;
 
@@ -89,6 +88,8 @@ const SignUp = () => {
         message: actionData.message,
         type: actionData.type
       });
+    } else {
+      showAlert({ type: AlertType.Error, message: '' });
     }
   }, [actionData]);
 

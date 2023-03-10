@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 import AlertType from '../utilities/AlertEnum';
 import Position from './Position';
-import ProgressBar from './ProgressBar';
 
 const Alert = ({ children, type }: { children: string; type: AlertType }) => {
   const AlertContainer = styled.div`
@@ -25,7 +24,6 @@ const Alert = ({ children, type }: { children: string; type: AlertType }) => {
     <Position pos="fixed" top="0" left="0">
       <AlertContainer>
         <p>{children}</p>
-        <ProgressBar />
       </AlertContainer>
     </Position>
   );
