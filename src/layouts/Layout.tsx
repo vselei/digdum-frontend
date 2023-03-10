@@ -21,6 +21,8 @@ const Layout = () => {
             --primary-color: ${theme === 'light' ? '#050119' : '#f4f4f4'};
             --secondary-color: ${theme === 'dark' ? '#050119' : '#f4f4f4'};
 
+            --white-color: #f4f4f4;
+
             /* sizes */
             --size-1: 1rem;
             --size-1-2: 1.5rem;
@@ -29,6 +31,9 @@ const Layout = () => {
             --size-4: 4rem;
 
             --size-full: 100%;
+
+            /* vw */
+            --w-100: 100vw;
 
             /* vh */
             --h-100: 100vh;
