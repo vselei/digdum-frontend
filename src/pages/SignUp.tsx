@@ -3,9 +3,9 @@ import {
   LoaderFunctionArgs,
   Form,
   redirect,
-  useParams,
   useLoaderData,
-  useActionData
+  useActionData,
+  useSearchParams
 } from 'react-router-dom';
 
 import Head from '../components/Head';
@@ -25,7 +25,7 @@ import AlertType from '../utilities/AlertEnum';
 import useAlert from '../hooks/useAlert';
 import { useEffect } from 'react';
 
-export const action = async ({ request, params }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
   // TODO: Mudar para query string
@@ -45,24 +45,24 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
   const lsName = 'UserSignUpData';
   storingInputData(lsName, inputs);
 
-  const { steps } = params;
-  const stepCount = parseInt(steps!);
+  const searchParams = new URL(request.url).searchParams;
+  const step = parseInt(searchParams.get('step')!) || 0;
 
-  if (stepCount >= signUpSteps.length) {
+  if (step >= signUpSteps.length) {
     return redirect('/bamboo-forest');
   }
 
-  return redirect(`/sign-up/${stepCount + 1}`);
+  return redirect(`/sign-up?step=${step + 1}`);
 };
 
-export const loader = ({ params }: LoaderFunctionArgs) => {
-  const { steps } = params;
-  const stepCount = parseInt(steps!);
+export const loader = ({ request }: LoaderFunctionArgs) => {
+  const searchParams = new URL(request.url).searchParams;
+  const step = parseInt(searchParams.get('step')!) || 0;
 
   const lsName = 'UserSignUpData';
   const userSignUpDataParsed = getDataFromLS(lsName, '{}');
 
-  if (stepCount !== 3) {
+  if (step !== 3) {
     return '';
   }
 
@@ -79,8 +79,8 @@ const SignUp = () => {
 
   const defaultValue = useLoaderData() as string;
 
-  const { steps } = useParams();
-  const stepCount = parseInt(steps!);
+  const [searchParams] = useSearchParams();
+  const step = parseInt(searchParams.get('step')!) || 0;
 
   const { showAlert } = useAlert();
   useEffect(() => {
@@ -110,12 +110,10 @@ const SignUp = () => {
         <Logo />
         <Form method="post" noValidate>
           <Heading>Cadastre-se</Heading>
-          {stepCount <= signUpSteps.length - 1 ? (
+          {step <= signUpSteps.length - 1 ? (
             <>
               {signUpSteps[
-                stepCount < signUpSteps.length
-                  ? stepCount
-                  : signUpSteps.length - 1
+                step < signUpSteps.length ? step : signUpSteps.length - 1
               ].map(step => (
                 <FormInput
                   key={step.id}
@@ -127,7 +125,7 @@ const SignUp = () => {
                 />
               ))}
               <Button type="submit">
-                {stepCount < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
+                {step < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
               </Button>
               <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
             </>

@@ -47,7 +47,7 @@ const ForgotPassword = () => {
             width="var(--size-full)"
             maxWidth="var(--resolution-480)"
           >
-            <Anchor path="/sign-up/0">Não tem uma conta? Cadastre-se!</Anchor>
+            <Anchor path="/sign-up?step=0">Não tem uma conta? Cadastre-se!</Anchor>
             <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
           </FlexContainer>
         </Form>

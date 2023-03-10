@@ -32,7 +32,7 @@ const routes = createBrowserRouter([
             element: <Login />
           },
           {
-            path: '/sign-up/:steps',
+            path: '/sign-up',
             element: <SignUp />,
             action: signUpAction,
             loader: signUpLoader
