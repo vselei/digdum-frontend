@@ -25,6 +25,8 @@ import AlertType from '../utilities/AlertEnum';
 import useAlert from '../hooks/useAlert';
 import { useEffect } from 'react';
 
+const LS_NAME = 'UserSignUpData';
+
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
@@ -41,8 +43,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     };
   }
 
-  const lsName = 'UserSignUpData';
-  storingInputData(lsName, inputs);
+  storingInputData(LS_NAME, inputs);
 
   const searchParams = new URL(request.url).searchParams;
   const step = parseInt(searchParams.get('step')!) || 0;
@@ -58,8 +59,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const step = parseInt(searchParams.get('step')!) || 0;
 
-  const lsName = 'UserSignUpData';
-  const userSignUpDataParsed = getDataFromLS(lsName, '{}');
+  const userSignUpDataParsed = getDataFromLS(LS_NAME, '{}');
 
   if (step !== 3) {
     return '';
