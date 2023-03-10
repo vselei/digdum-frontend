@@ -13,27 +13,40 @@ const usernameGenerator = (name: string) => {
   ];
 
   if (lowerCaseName.trim().includes(' ')) {
-    const splittedName = lowerCaseName.split(' ');
+    let splittedName = lowerCaseName.split(' ');
+    splittedName = splittedName.filter(name => name !== '');
+
+    const getTheFirstLetterFirstNames = splittedName
+      .map((name, index, array) =>
+        index === array.length - 1 ? name : array[index][0]
+      )
+      .join('');
+
+    const getTheFirstLetterLastName = splittedName
+      .map((name, index, array) =>
+        index === array.length - 1 ? array[index][0] : name
+      )
+      .join('');
+
+    const getFullNameOfTheMiddleName = splittedName
+      .map((name, index, array) =>
+        index === array.length - 1 || index === 0 ? array[index][0] : name
+      )
+      .join('');
 
     usernamePossibilities = [
       splittedName.join('-'),
       splittedName.join('.'),
       splittedName.join('_'),
-      splittedName
-        .map((name, index, array) =>
-          index === array.length - 1 ? name : array[index][0]
-        )
-        .join(''),
-      splittedName
-        .map((name, index, array) =>
-          index === array.length - 1 ? array[index][0] : name
-        )
-        .join(''),
-      splittedName
-        .map((name, index, array) =>
-          index === array.length - 1 || index === 0 ? array[index][0] : name
-        )
-        .join(''),
+      getTheFirstLetterFirstNames,
+      `${getTheFirstLetterFirstNames}${randNumber(0, 1000)}`,
+      `${randNumber(0, 1000)}${getTheFirstLetterFirstNames}`,
+      getTheFirstLetterLastName,
+      `${getTheFirstLetterLastName}${randNumber(0, 1000)}`,
+      `${randNumber(0, 1000)}${getTheFirstLetterLastName}`,
+      getFullNameOfTheMiddleName,
+      `${getFullNameOfTheMiddleName}${randNumber(0, 1000)}`,
+      `${randNumber(0, 1000)}${getFullNameOfTheMiddleName}`,
       splittedName.reverse().join('-'),
       splittedName.reverse().join('.'),
       splittedName.reverse().join('_'),
