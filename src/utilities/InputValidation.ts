@@ -20,11 +20,27 @@ const InputValidation = (inputs: { [k: string]: FormDataEntryValue }) => {
     },
     passwordValidation: (password: FormDataEntryValue) => {
       const passwordStr = `${password}`;
+
       const hasNumbers = /(?=.*\d)/;
+      const hasLowerCaseLetter = /(?=.*[a-z])/;
+      const hasUpperCaseLetter = /(?=.*[A-Z])/;
+      const hasSpecialCharacter = /(?=.*[$*&@#])/;
 
       if (!hasNumbers.test(passwordStr)) {
         return {
-          message: 'A senha tem que ter ao menos um número'
+          message: 'A senha deve conter ao menos um número'
+        };
+      }
+
+      if (!hasLowerCaseLetter.test(passwordStr)) {
+        return {
+          message: 'A senha deve conter ao menos uma letra minúscula'
+        };
+      }
+
+      if (!hasUpperCaseLetter.test(passwordStr)) {
+        return {
+          message: 'A senha deve conter ao menos uma letra maiúscula'
         };
       }
     },
