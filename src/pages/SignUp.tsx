@@ -4,7 +4,8 @@ import {
   Form,
   redirect,
   useParams,
-  useLoaderData
+  useLoaderData,
+  useActionData
 } from 'react-router-dom';
 
 import Head from '../components/Head';
@@ -20,6 +21,8 @@ import storingInputData from '../utilities/storingInputData';
 import getDataFromLS from '../utilities/getDataFromLS';
 import usernameGenerator from '../utilities/usernameGenerator';
 import InputValidation from '../utilities/InputValidation';
+import AlertType from '../utilities/AlertEnum';
+import Alert from '../components/Alert';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
@@ -67,6 +70,11 @@ export const loader = ({ params }: LoaderFunctionArgs) => {
 };
 
 const SignUp = () => {
+  const actionData = useActionData() as {
+    type: AlertType;
+    message: string;
+  };
+
   const defaultValue = useLoaderData() as string;
 
   const { steps } = useParams();
