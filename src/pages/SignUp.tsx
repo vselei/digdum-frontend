@@ -19,6 +19,7 @@ import signUpSteps from '../utilities/signUpSteps';
 import storingInputData from '../utilities/storingInputData';
 import getDataFromLS from '../utilities/getDataFromLS';
 import usernameGenerator from '../utilities/usernameGenerator';
+import InputValidation from '../utilities/InputValidation';
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
@@ -26,6 +27,15 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
 
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
+
+  const { isValid, type, message } = InputValidation(inputs);
+
+  if (!isValid) {
+    return {
+      type,
+      message
+    };
+  }
 
   const lsName = 'UserSignUpData';
   storingInputData(lsName, inputs);
