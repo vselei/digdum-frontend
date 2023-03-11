@@ -6,7 +6,8 @@ import {
   redirect,
   useLoaderData,
   useActionData,
-  useSearchParams
+  useSearchParams,
+  useNavigate
 } from 'react-router-dom';
 
 import Head from '../components/Head';
@@ -16,13 +17,16 @@ import Button from '../components/Button';
 import Anchor from '../components/Anchor';
 import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
+import IconButton from '../components/IconButton';
 
 import signUpSteps from '../utilities/signUpSteps';
 import storingInputData from '../utilities/storingInputData';
 import getDataFromSS from '../utilities/getDataFromSS';
 import usernameGenerator from '../utilities/usernameGenerator';
 import InputValidation from '../utilities/InputValidation';
+
 import AlertType from '../helpers/AlertEnum';
+import IconButtonType from '../helpers/IconButtonEnum';
 
 import useAlert from '../hooks/useAlert';
 
@@ -31,7 +35,6 @@ const SS_NAME = 'userSignUpData';
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
-  // TODO: Retornar uma etapa
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
@@ -119,6 +122,8 @@ const SignUp = () => {
   const [searchParams] = useSearchParams();
   const step = parseInt(searchParams.get('step')!) || 0;
 
+  const navigate = useNavigate();
+
   const { showAlert } = useAlert();
   useEffect(() => {
     if (actionData?.message) {
@@ -148,7 +153,30 @@ const SignUp = () => {
       >
         <Logo />
         <Form method="post" noValidate>
-          <Heading>Cadastre-se</Heading>
+          <FlexContainer justifyContent="space-between">
+            <Heading>Cadastre-se</Heading>
+            {step > 0 ? (
+              <IconButton
+                type={IconButtonType.Two}
+                onClickHandler={() => navigate(`/sign-up?step=${step - 1}`)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9.53 2.47a.75.75 0 010 1.06L4.81 8.25H15a6.75 6.75 0 010 13.5h-3a.75.75 0 010-1.5h3a5.25 5.25 0 100-10.5H4.81l4.72 4.72a.75.75 0 11-1.06 1.06l-6-6a.75.75 0 010-1.06l6-6a.75.75 0 011.06 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </IconButton>
+            ) : (
+              <></>
+            )}
+          </FlexContainer>
           {signUpSteps[step].map(step => (
             <FormInput
               key={step.id}
