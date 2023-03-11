@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   ActionFunctionArgs,
   LoaderFunctionArgs,
@@ -22,8 +23,8 @@ import getDataFromSS from '../utilities/getDataFromSS';
 import usernameGenerator from '../utilities/usernameGenerator';
 import InputValidation from '../utilities/InputValidation';
 import AlertType from '../utilities/AlertEnum';
+
 import useAlert from '../hooks/useAlert';
-import { useEffect } from 'react';
 
 const SS_NAME = 'UserSignUpData';
 
@@ -93,9 +94,13 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const step = Number.parseInt(searchParams.get('step')!) || 0;
 
+  if (step < 0 || step >= signUpSteps.length) {
+    console.log('hello');
+  }
+
   const userSignUpDataParsed = getDataFromSS(SS_NAME, '{}');
 
-  if (step !== 2) {
+  if (step < signUpSteps.length - 1) {
     return '';
   }
 
@@ -145,9 +150,7 @@ const SignUp = () => {
         <Logo />
         <Form method="post" noValidate>
           <Heading>Cadastre-se</Heading>
-          {signUpSteps[
-            step < signUpSteps.length ? step : signUpSteps.length - 1
-          ].map(step => (
+          {signUpSteps[step].map(step => (
             <FormInput
               key={step.id}
               id={step.id}
