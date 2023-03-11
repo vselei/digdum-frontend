@@ -1,6 +1,8 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
-const IconButton = styled.button`
+import IconButtonType from '../utilities/IconButtonEnum';
+
+const IconButtonTypeOne = styled.button`
   cursor: pointer;
   color: var(--primary-color);
 
@@ -8,5 +10,42 @@ const IconButton = styled.button`
     width: var(--size-1-2);
   }
 `;
+
+const IconButtonTypeTwo = styled.button`
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  padding: var(--size-1);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: var(--size-1);
+
+  & > svg {
+    width: var(--size-2);
+  }
+`;
+
+const IconButton = ({
+  children,
+  type,
+  onClickHandler
+}: {
+  children: React.ReactElement;
+  type: IconButtonType;
+  onClickHandler: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}) => {
+  if (type === IconButtonType.One) {
+    return (
+      <IconButtonTypeOne type="button" onClick={onClickHandler}>
+        {children}
+      </IconButtonTypeOne>
+    );
+  } else {
+    return (
+      <IconButtonTypeTwo type="button" onClick={onClickHandler}>
+        {children}
+      </IconButtonTypeTwo>
+    );
+  }
+};
 
 export default IconButton;
