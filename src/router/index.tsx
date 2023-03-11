@@ -14,7 +14,6 @@ import { AlertProvider } from '../context/AlertProvider';
 
 const routes = createBrowserRouter([
   {
-    path: '/',
     element: (
       <ThemesProvider>
         <AlertProvider>
