@@ -83,7 +83,7 @@ const FormInput = ({
             )}
           </IconButton>
         ) : id === 'username' ? (
-          <IconButton type="button" onClick={() => navigate('/sign-up?step=3')}>
+          <IconButton type="button" onClick={() => navigate('/sign-up?step=2')}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

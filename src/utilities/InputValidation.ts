@@ -14,14 +14,17 @@ const InputValidation = (inputs: { [k: string]: FormDataEntryValue }) => {
 
       return mailRegex.test(`${email}`);
     },
-    passwordLength: (password: FormDataEntryValue) => {
-      return !(`${password}`.length < 8);
+    biggerThan: (text: FormDataEntryValue, length: number) => {
+      return !(`${text}`.length < length);
     },
     passwordMatch: (
       password: FormDataEntryValue,
       confirmPassword: FormDataEntryValue
     ) => {
       return password === confirmPassword;
+    },
+    dateValidation: (date: string) => {
+      const splittedDate = date.split('/');
     }
   };
 };

@@ -30,19 +30,15 @@ const SS_NAME = 'UserSignUpData';
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
-  // TODO: Validar
   // TODO: Apagar signup data ao completar cadastro ou sair da url de cadastro
+  // TODO: Retornar uma etapa
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
   storingInputData(SS_NAME, inputs);
 
-  const {
-    isEmpty,
-    emailValidation,
-    passwordLength,
-    passwordMatch
-  } = InputValidation(inputs);
+  const { isEmpty, emailValidation, biggerThan, passwordMatch } =
+    InputValidation(inputs);
 
   if (isEmpty) {
     return {
@@ -58,7 +54,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     };
   }
 
-  if (inputs.password && !passwordLength!(inputs.password)) {
+  if (inputs['complete-name'] && !biggerThan!(inputs['complete-name'], 3)) {
+    return {
+      type: AlertType.Error,
+      message: 'Digite seu nome completo'
+    };
+  }
+
+  if (inputs.password && !biggerThan!(inputs.password, 8)) {
     return {
       type: AlertType.Error,
       message: 'A senha tem que ter no mínimo 8 caracteres'
@@ -79,11 +82,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const step = parseInt(searchParams.get('step')!) || 0;
 
-  if (step >= signUpSteps.length) {
-    return redirect('/bamboo-forest');
+  if (step < signUpSteps.length - 1) {
+    return redirect(`/sign-up?step=${step + 1}`);
   }
 
-  return redirect(`/sign-up?step=${step + 1}`);
+  return redirect('/bamboo-forest');
 };
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -92,7 +95,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
   const userSignUpDataParsed = getDataFromSS(SS_NAME, '{}');
 
-  if (step !== 3) {
+  if (step !== 2) {
     return '';
   }
 
@@ -142,39 +145,24 @@ const SignUp = () => {
         <Logo />
         <Form method="post" noValidate>
           <Heading>Cadastre-se</Heading>
-          {step <= signUpSteps.length - 1 ? (
-            <>
-              {signUpSteps[
-                step < signUpSteps.length ? step : signUpSteps.length - 1
-              ].map(step => (
-                <FormInput
-                  key={step.id}
-                  id={step.id}
-                  label={step.label}
-                  type={step.type}
-                  placeholder={step.placeholder}
-                  defaultValue={getDataFromSS(SS_NAME, '{}')[step.id] || defaultValue}
-                />
-              ))}
-              <Button type="submit">
-                {step < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
-              </Button>
-              <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
-            </>
-          ) : (
-            <>
-              <FormInput
-                key="email-validation"
-                id="email-validation"
-                label="Valide seu e-mail"
-                type="tel"
-                placeholder="Verifique sua caixa de mensagens"
-                defaultValue={getDataFromSS(SS_NAME, '{}')['email-validation'] || defaultValue}
-              />
-              <Button type="submit">Validar e-mail</Button>
-              <Anchor path={`/bamboo-forest`}>Validar mais tarde</Anchor>
-            </>
-          )}
+          {signUpSteps[
+            step < signUpSteps.length ? step : signUpSteps.length - 1
+          ].map(step => (
+            <FormInput
+              key={step.id}
+              id={step.id}
+              label={step.label}
+              type={step.type}
+              placeholder={step.placeholder}
+              defaultValue={
+                getDataFromSS(SS_NAME, '{}')[step.id] || defaultValue
+              }
+            />
+          ))}
+          <Button type="submit">
+            {step < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
+          </Button>
+          <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
         </Form>
       </FlexContainer>
     </>

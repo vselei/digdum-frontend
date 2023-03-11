@@ -5,6 +5,12 @@ const signUpSteps = [
       label: 'E-mail',
       type: 'email',
       placeholder: 'Digite seu e-mail'
+    },
+    {
+      id: 'complete-name',
+      label: 'Nome Completo',
+      type: 'text',
+      placeholder: 'Digite seu nome completo'
     }
   ],
   [
@@ -19,20 +25,6 @@ const signUpSteps = [
       label: 'Confirme sua Senha',
       type: 'password',
       placeholder: 'Confirme sua senha'
-    }
-  ],
-  [
-    {
-      id: 'complete-name',
-      label: 'Nome Completo',
-      type: 'text',
-      placeholder: 'Digite seu nome completo'
-    },
-    {
-      id: 'born-date',
-      label: 'Data de nascimento',
-      type: 'text',
-      placeholder: 'Data de nascimento (DD/MM/AAAA)'
     }
   ],
   [
