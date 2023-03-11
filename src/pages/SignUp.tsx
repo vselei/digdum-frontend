@@ -31,7 +31,6 @@ const SS_NAME = 'userSignUpData';
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
   // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
-  // TODO: Apagar signup data ao completar cadastro ou sair da url de cadastro
   // TODO: Retornar uma etapa
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
@@ -86,8 +85,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   if (step < signUpSteps.length - 1) {
     return redirect(`/sign-up?step=${step + 1}`);
   }
-
-  sessionStorage.removeItem(SS_NAME);
 
   return redirect('/bamboo-forest');
 };

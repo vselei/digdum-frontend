@@ -1,19 +1,11 @@
-import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Input from '../components/Input';
-import Label from '../components/Label';
+
+import Input from './Input';
+import Label from './Label';
+import IconButton from './IconButton';
 import FlexContainer from './FlexContainer';
 import FormControl from './FormControl';
-
-const IconButton = styled.button`
-  cursor: pointer;
-  color: var(--primary-color);
-
-  & > svg {
-    width: var(--size-1-2);
-  }
-`;
 
 const FormInput = ({
   id,
