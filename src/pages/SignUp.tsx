@@ -35,7 +35,7 @@ const SS_NAME = 'userSignUpData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
-  // TODO: Detectar quando a etapa de cadastro estiver no meio do caminho e encaminhar para primeira etapa, caso não haja dado anterior inserido
+  // TODO: Remover session storage na página 404
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
@@ -86,6 +86,22 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const step = parseInt(searchParams.get('step')!) || 0;
 
+  const userSignUpDataParsed = getDataFromSS(SS_NAME, '{}');
+
+  if (
+    (step > 0 &&
+      !userSignUpDataParsed['email'] &&
+      !userSignUpDataParsed['complete-name']) ||
+    (step > 1 &&
+      !userSignUpDataParsed['password'] &&
+      !userSignUpDataParsed['confirm-password'])
+  ) {
+    return {
+      type: AlertType.Info,
+      message: 'Você esqueceu algum campo. Volte para preencher'
+    };
+  }
+
   if (step < signUpSteps.length - 1) {
     return redirect(`/sign-up?step=${step + 1}`);
   }
@@ -126,6 +142,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const { showAlert } = useAlert();
+
   useEffect(() => {
     if (actionData?.message) {
       showAlert({
@@ -150,7 +167,15 @@ const SignUp = () => {
           col: 'var(--size-2)'
         }}
         flex="1 1 var(--resolution-240)"
-        minHeight="var(--h-100)"
+        minHeight="90vh"
+        media={[
+          {
+            size: 768,
+            css: `
+              min-height: var(--h-100);
+            `
+          }
+        ]}
       >
         <Logo />
         <Form method="post" noValidate>
@@ -160,7 +185,7 @@ const SignUp = () => {
               <Position
                 pos="fixed"
                 left="var(--size-1)"
-                top="var(--size-1)"
+                bottom="var(--size-1)"
                 media={[
                   {
                     size: 1024,

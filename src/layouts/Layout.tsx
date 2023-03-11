@@ -21,7 +21,6 @@ const Layout = () => {
   return (
     <>
       <GlobalStyles />
-
       <HelmetProvider>
         {alert.message && <Alert type={alert.type}>{alert.message}</Alert>}
         <Outlet />

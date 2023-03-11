@@ -24,7 +24,15 @@ const Login = () => {
           col: 'var(--size-3)'
         }}
         flex="1 1 var(--resolution-240)"
-        minHeight="var(--h-100)"
+        minHeight="90vh"
+        media={[
+          {
+            size: 768,
+            css: `
+              min-height: var(--h-100);
+            `
+          }
+        ]}
       >
         <Logo />
         <Form method="post" noValidate>
@@ -34,14 +42,14 @@ const Login = () => {
             label="E-mail"
             type="email"
             placeholder="Digite seu e-mail"
-            defaultValue=''
+            defaultValue=""
           />
           <FormInput
             id="password"
             label="Senha"
             type="password"
             placeholder="Digite sua senha"
-            defaultValue=''
+            defaultValue=""
           />
           <Button type="submit">Entrar</Button>
           <FlexContainer

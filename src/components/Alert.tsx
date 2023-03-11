@@ -23,7 +23,7 @@ const Alert = ({ children, type }: { children: string; type: AlertType }) => {
   `;
 
   return (
-    <Position pos="fixed" top="0" left="0">
+    <Position pos="sticky" top="0" left="0">
       <AlertContainer>
         <p>{children}</p>
       </AlertContainer>

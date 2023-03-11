@@ -24,7 +24,15 @@ const ForgotPassword = () => {
           col: 'var(--size-3)'
         }}
         flex="1 1 var(--resolution-240)"
-        minHeight="var(--h-100)"
+        minHeight="90vh"
+        media={[
+          {
+            size: 768,
+            css: `
+              min-height: var(--h-100);
+            `
+          }
+        ]}
       >
         <Logo />
         <Form method="post" noValidate>

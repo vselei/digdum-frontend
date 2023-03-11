@@ -18,6 +18,7 @@ const IconButtonTypeTwo = styled.button`
   color: var(--secondary-color);
   background-color: var(--primary-color);
   border-radius: var(--size-1);
+  border: 2px solid var(--secondary-color);
 
   & > svg {
     width: var(--size-2);

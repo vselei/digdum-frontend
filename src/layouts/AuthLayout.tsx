@@ -10,7 +10,7 @@ const AuthLayout = () => {
       <Outlet />
       <Position
         pos="fixed"
-        top="var(--size-1)"
+        bottom="var(--size-1)"
         right="var(--size-1)"
         media={[
           {
