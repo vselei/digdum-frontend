@@ -7,12 +7,12 @@ const Input = styled.input`
   border-radius: var(--size-1);
   font-size: var(--size-1);
   font-weight: var(--weight-700);
-  text-transform: uppercase;
   color: var(--primary-color);
   width: var(--size-full);
-
+  
   &::placeholder {
     color: var(--primary-color);
+    text-transform: uppercase;
   }
 `;
 

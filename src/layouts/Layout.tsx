@@ -52,7 +52,7 @@ const Layout = () => {
           html {
             box-sizing: border-box;
             line-height: 1.15;
-            font-size: 62.5%;
+            font-size: 75%;
           }
 
           *,
