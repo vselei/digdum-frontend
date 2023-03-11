@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import Layout from '../layouts/Layout';
+import Layout, {loader as layoutLoader} from '../layouts/Layout';
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
 import SignUp, {
@@ -22,6 +22,7 @@ const routes = createBrowserRouter([
         </AlertProvider>
       </ThemesProvider>
     ),
+    loader: layoutLoader,
     children: [
       {
         path: '/',

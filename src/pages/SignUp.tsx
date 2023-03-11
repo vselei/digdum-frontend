@@ -26,7 +26,7 @@ import AlertType from '../utilities/AlertEnum';
 
 import useAlert from '../hooks/useAlert';
 
-const SS_NAME = 'UserSignUpData';
+const SS_NAME = 'userSignUpData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
@@ -86,6 +86,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   if (step < signUpSteps.length - 1) {
     return redirect(`/sign-up?step=${step + 1}`);
   }
+
+  sessionStorage.removeItem(SS_NAME);
 
   return redirect('/bamboo-forest');
 };

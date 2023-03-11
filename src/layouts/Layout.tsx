@@ -1,5 +1,5 @@
 import { Global, css } from '@emotion/react';
-import { Outlet } from 'react-router-dom';
+import { LoaderFunctionArgs, Outlet } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import useThemes from '../hooks/useThemes';
@@ -7,6 +7,16 @@ import useThemes from '../hooks/useThemes';
 import icon from '/img/favicon.svg';
 import useAlert from '../hooks/useAlert';
 import Alert from '../components/Alert';
+
+export const loader = ({ request }: LoaderFunctionArgs) => {
+  const path = new URL(request.url).pathname;
+
+  if (!path.includes('/sign-up')) {
+    sessionStorage.removeItem('userSignUpData');
+  }
+
+  return null;
+};
 
 const Layout = () => {
   const { theme } = useThemes();
@@ -134,9 +144,7 @@ const Layout = () => {
           />
           <link rel="icon" href={icon} type="image/svg+xml" />
         </Helmet>
-        {alert.message && <Alert type={alert.type}>
-          {alert.message}
-        </Alert>}
+        {alert.message && <Alert type={alert.type}>{alert.message}</Alert>}
         <Outlet />
       </HelmetProvider>
     </>
