@@ -22,7 +22,7 @@ const signUpSteps = [
     },
     {
       id: 'confirm-password',
-      label: 'Confirme sua Senha',
+      label: 'Confirmar Senha',
       type: 'password',
       placeholder: 'Confirme sua senha'
     }

@@ -160,14 +160,12 @@ const SignUp = () => {
               <Position
                 pos="fixed"
                 left="var(--size-1)"
-                bottom="var(--size-1)"
+                top="var(--size-1)"
                 media={[
                   {
                     size: 1024,
                     css: `
-                    position: relative;
-                    left: auto;
-                    bottom: auto;
+                    position: static;
                   `
                   }
                 ]}

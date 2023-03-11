@@ -8,7 +8,20 @@ const AuthLayout = () => {
   return (
     <Container>
       <Outlet />
-      <Position pos='fixed' bottom='var(--size-1)' right='var(--size-1)'>
+      <Position
+        pos="fixed"
+        top="var(--size-1)"
+        right="var(--size-1)"
+        media={[
+          {
+            size: 1024,
+            css: `
+            top: auto;
+            bottom: var(--size-1);
+          `
+          }
+        ]}
+      >
         <ChangeTheme />
       </Position>
     </Container>
