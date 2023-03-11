@@ -34,6 +34,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
+  storingInputData(LS_NAME, inputs);
+
   const {
     isEmpty,
     emailValidation,
@@ -73,8 +75,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     };
   }
 
-  storingInputData(LS_NAME, inputs);
-
   const searchParams = new URL(request.url).searchParams;
   const step = parseInt(searchParams.get('step')!) || 0;
 
@@ -87,11 +87,17 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
-  const step = parseInt(searchParams.get('step')!) || 0;
+  const step = Number.parseInt(searchParams.get('step')!) || 0;
 
   const userSignUpDataParsed = getDataFromLS(LS_NAME, '{}');
 
-  return 'hello';
+  if (step !== 3) {
+    return '';
+  }
+
+  const usernameGen = usernameGenerator(userSignUpDataParsed['complete-name']);
+
+  return usernameGen;
 };
 
 const SignUp = () => {
@@ -146,7 +152,7 @@ const SignUp = () => {
                   label={step.label}
                   type={step.type}
                   placeholder={step.placeholder}
-                  defaultValue={defaultValue}
+                  defaultValue={getDataFromLS(LS_NAME, '{}')[step.id] || defaultValue}
                 />
               ))}
               <Button type="submit">
@@ -162,7 +168,7 @@ const SignUp = () => {
                 label="Valide seu e-mail"
                 type="tel"
                 placeholder="Verifique sua caixa de mensagens"
-                defaultValue={defaultValue}
+                defaultValue={getDataFromLS(LS_NAME, '{}')['email-validation'] || defaultValue}
               />
               <Button type="submit">Validar e-mail</Button>
               <Anchor path={`/bamboo-forest`}>Validar mais tarde</Anchor>
