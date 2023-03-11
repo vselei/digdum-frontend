@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import AlertType from '../utilities/AlertEnum';
+import AlertType from '../helpers/AlertEnum';
 import Position from './Position';
 
 const Alert = ({ children, type }: { children: string; type: AlertType }) => {

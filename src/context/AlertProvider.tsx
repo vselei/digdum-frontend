@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import AlertType from '../utilities/AlertEnum';
+import AlertType from '../helpers/AlertEnum';
 
 const AlertContext = createContext({
   showAlert: ({ type, message }: { type: AlertType; message: string }) => {},

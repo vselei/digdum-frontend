@@ -22,7 +22,7 @@ import storingInputData from '../utilities/storingInputData';
 import getDataFromSS from '../utilities/getDataFromSS';
 import usernameGenerator from '../utilities/usernameGenerator';
 import InputValidation from '../utilities/InputValidation';
-import AlertType from '../utilities/AlertEnum';
+import AlertType from '../helpers/AlertEnum';
 
 import useAlert from '../hooks/useAlert';
 

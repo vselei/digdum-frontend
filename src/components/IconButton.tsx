@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import IconButtonType from '../utilities/IconButtonEnum';
+import IconButtonType from '../helpers/IconButtonEnum';
 
 const IconButtonTypeOne = styled.button`
   cursor: pointer;

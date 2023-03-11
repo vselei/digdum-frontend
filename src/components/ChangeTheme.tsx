@@ -1,5 +1,5 @@
 import useThemes from '../hooks/useThemes';
-import IconButtonType from '../utilities/IconButtonEnum';
+import IconButtonType from '../helpers/IconButtonEnum';
 
 import IconButton from './IconButton';
 

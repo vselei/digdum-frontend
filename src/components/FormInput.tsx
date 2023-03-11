@@ -6,7 +6,7 @@ import Label from './Label';
 import IconButton from './IconButton';
 import FlexContainer from './FlexContainer';
 import FormControl from './FormControl';
-import IconButtonType from '../utilities/IconButtonEnum';
+import IconButtonType from '../helpers/IconButtonEnum';
 
 const FormInput = ({
   id,
