@@ -108,6 +108,7 @@ const FormInput = ({
           type !== 'password' ? type : passwordIsVisible ? 'text' : 'password'
         }
         placeholder={placeholder}
+        autoComplete={'off'}
         defaultValue={defaultValue}
         id={id}
         name={id}
