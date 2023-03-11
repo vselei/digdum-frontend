@@ -34,7 +34,7 @@ const ForgotPassword = () => {
             label="E-mail"
             type="email"
             placeholder="Digite seu e-mail"
-            defaultValue=''
+            defaultValue=""
           />
           <Button type="submit">Recuperar Conta</Button>
           <FlexContainer
@@ -45,9 +45,18 @@ const ForgotPassword = () => {
               col: 'var(--size-1)'
             }}
             width="var(--size-full)"
-            maxWidth="var(--resolution-480)"
+            media={[
+              {
+                size: 1024,
+                css: `
+                  max-width: var(--resolution-480);
+                `
+              }
+            ]}
           >
-            <Anchor path="/sign-up?step=0">Não tem uma conta? Cadastre-se!</Anchor>
+            <Anchor path="/sign-up?step=0">
+              Não tem uma conta? Cadastre-se!
+            </Anchor>
             <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
           </FlexContainer>
         </Form>

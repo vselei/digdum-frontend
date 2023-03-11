@@ -8,7 +8,8 @@ const FlexContainer = ({
   flex,
   width,
   maxWidth,
-  minHeight
+  minHeight,
+  media
 }: {
   children: React.ReactElement[];
   justifyContent?: string;
@@ -21,6 +22,12 @@ const FlexContainer = ({
   width?: string;
   maxWidth?: string;
   minHeight?: string;
+  media?: [
+    {
+      size: number;
+      css: string;
+    }
+  ];
 }) => {
   const Flex = styled.div`
     display: flex;
@@ -36,9 +43,14 @@ const FlexContainer = ({
       flex: ${flex || 'initial'};
     }
 
-    @media (min-width: 128rem) {
-      max-width: ${maxWidth || 'auto'};
-    }
+    ${media?.length &&
+    media.map(
+      query => `
+      @media (min-width: ${query.size}px) {
+        ${query.css}
+      }
+    `
+    )}
   `;
 
   return <Flex>{children}</Flex>;
