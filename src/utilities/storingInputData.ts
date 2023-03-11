@@ -1,13 +1,13 @@
 const storingInputData = (
-  lsName: string,
+  ssName: string,
   inputs: {
     [k: string]: FormDataEntryValue;
   }
 ) => {
-  const ancientLSData = JSON.parse(localStorage.getItem(lsName) || '{}');
+  const ancientLSData = JSON.parse(sessionStorage.getItem(ssName) || '{}');
   
-  localStorage.setItem(
-    lsName,
+  sessionStorage.setItem(
+    ssName,
     JSON.stringify({
       ...ancientLSData,
       ...inputs

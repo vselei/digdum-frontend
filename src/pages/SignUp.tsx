@@ -18,14 +18,14 @@ import Heading from '../components/Heading';
 
 import signUpSteps from '../utilities/signUpSteps';
 import storingInputData from '../utilities/storingInputData';
-import getDataFromLS from '../utilities/getDataFromLS';
+import getDataFromSS from '../utilities/getDataFromSS';
 import usernameGenerator from '../utilities/usernameGenerator';
 import InputValidation from '../utilities/InputValidation';
 import AlertType from '../utilities/AlertEnum';
 import useAlert from '../hooks/useAlert';
 import { useEffect } from 'react';
 
-const LS_NAME = 'UserSignUpData';
+const SS_NAME = 'UserSignUpData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Página 404 quando a rota não existir
@@ -35,7 +35,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
-  storingInputData(LS_NAME, inputs);
+  storingInputData(SS_NAME, inputs);
 
   const {
     isEmpty,
@@ -90,7 +90,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const searchParams = new URL(request.url).searchParams;
   const step = Number.parseInt(searchParams.get('step')!) || 0;
 
-  const userSignUpDataParsed = getDataFromLS(LS_NAME, '{}');
+  const userSignUpDataParsed = getDataFromSS(SS_NAME, '{}');
 
   if (step !== 3) {
     return '';
@@ -153,7 +153,7 @@ const SignUp = () => {
                   label={step.label}
                   type={step.type}
                   placeholder={step.placeholder}
-                  defaultValue={getDataFromLS(LS_NAME, '{}')[step.id] || defaultValue}
+                  defaultValue={getDataFromSS(SS_NAME, '{}')[step.id] || defaultValue}
                 />
               ))}
               <Button type="submit">
@@ -169,7 +169,7 @@ const SignUp = () => {
                 label="Valide seu e-mail"
                 type="tel"
                 placeholder="Verifique sua caixa de mensagens"
-                defaultValue={getDataFromLS(LS_NAME, '{}')['email-validation'] || defaultValue}
+                defaultValue={getDataFromSS(SS_NAME, '{}')['email-validation'] || defaultValue}
               />
               <Button type="submit">Validar e-mail</Button>
               <Anchor path={`/bamboo-forest`}>Validar mais tarde</Anchor>
