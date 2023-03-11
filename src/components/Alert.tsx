@@ -8,6 +8,8 @@ const Alert = ({ children, type }: { children: string; type: AlertType }) => {
     width: var(--w-100);
     background: ${type === AlertType.Error
       ? 'linear-gradient(to right, #e62e2e, #c71e1e)'
+      : type === AlertType.Info
+      ? 'linear-gradient(to right, #0c2656, #233a66)'
       : 'linear-gradient(to right, #378746, #15c636)'};
     color: var(--white-color);
     font-size: var(--size-1-2);
