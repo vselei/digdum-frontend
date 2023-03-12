@@ -1,5 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import ErrorBoundary from '../pages/ErrorBoundary';
+
 import Layout, {loader as layoutLoader} from '../layouts/Layout';
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
@@ -11,7 +13,6 @@ import ForgotPassword from '../pages/ForgotPassword';
 
 import { ThemesProvider } from '../context/ThemesProvider';
 import { AlertProvider } from '../context/AlertProvider';
-import ErrorBoundary from '../pages/ErrorBoundary';
 
 const routes = createBrowserRouter([
   {

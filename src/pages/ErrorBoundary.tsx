@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { HelmetProvider } from 'react-helmet-async';
 import { useRouteError } from 'react-router-dom';
 import Anchor from '../components/Anchor';
+import Container from '../components/Container';
 import FlexContainer from '../components/FlexContainer';
 
 import GlobalStyles from '../components/GlobalStyles';
@@ -12,7 +13,7 @@ const ErrorBoundaryStyles = styled.div`
   text-transform: uppercase;
 
   & h1 {
-    font-size: var(--size-4);
+    font-size: var(--size-2);
     font-weight: var(--weight-700);
     margin-bottom: var(--size-1);
   }
@@ -20,6 +21,12 @@ const ErrorBoundaryStyles = styled.div`
   & p {
     font-size: var(--size-1);
     font-weight: var(--weight-700);
+  }
+
+  @media (min-width: 768px) {
+    & > h1 {
+      font-size: var(--size-4);
+    }
   }
 `;
 
@@ -39,14 +46,23 @@ const ErrorBoundary = () => {
           description={`${error.data}. Status: ${error.status}`}
         />
       </HelmetProvider>
-      <FlexContainer justifyContent='center' alignItems='center' minHeight="var(--h-100)">
-        <ErrorBoundaryStyles>
-          <h1>Erro {error.status} - {error.statusText} ☹️</h1>
-          <p>
-            {error.data}. <Anchor path="/">Voltar para a página inicial</Anchor>
-          </p>
-        </ErrorBoundaryStyles>
-      </FlexContainer>
+      <Container>
+        <FlexContainer
+          justifyContent="center"
+          alignItems="center"
+          minHeight="var(--h-100)"
+        >
+          <ErrorBoundaryStyles>
+            <h1>
+              Erro {error.status} - {error.statusText} ☹️
+            </h1>
+            <p>
+              {error.data}.{' '}
+              <Anchor path="/">Voltar para a página inicial</Anchor>
+            </p>
+          </ErrorBoundaryStyles>
+        </FlexContainer>
+      </Container>
     </>
   );
 };
