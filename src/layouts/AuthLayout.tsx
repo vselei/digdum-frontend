@@ -12,15 +12,6 @@ const AuthLayout = () => {
         pos="fixed"
         bottom="var(--size-1)"
         right="var(--size-1)"
-        media={[
-          {
-            size: 1024,
-            css: `
-            top: auto;
-            bottom: var(--size-1);
-          `
-          }
-        ]}
       >
         <ChangeTheme />
       </Position>

@@ -164,18 +164,11 @@ const SignUp = () => {
         justifyContent="space-between"
         alignItems="center"
         gap={{
-          col: 'var(--size-2)'
+          col: 'var(--size-2)',
+          row: 'var(--size-2)'
         }}
         flex="1 1 var(--resolution-240)"
-        minHeight="90vh"
-        media={[
-          {
-            size: 768,
-            css: `
-              min-height: var(--h-100);
-            `
-          }
-        ]}
+        minHeight='calc(var(--h-100) - var(--size-2) * 3)'
       >
         <Logo />
         <Form method="post" noValidate>
@@ -232,7 +225,7 @@ const SignUp = () => {
           <Button type="submit">
             {step < signUpSteps.length - 1 ? 'Próximo' : 'Cadastre-se'}
           </Button>
-          <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
+          <Anchor path="/">Faça seu Login</Anchor>
         </Form>
       </FlexContainer>
     </>

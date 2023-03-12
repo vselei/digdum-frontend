@@ -21,18 +21,11 @@ const ForgotPassword = () => {
         justifyContent="space-between"
         alignItems="center"
         gap={{
-          col: 'var(--size-3)'
+          col: 'var(--size-2)',
+          row: 'var(--size-2)'
         }}
         flex="1 1 var(--resolution-240)"
-        minHeight="90vh"
-        media={[
-          {
-            size: 768,
-            css: `
-              min-height: var(--h-100);
-            `
-          }
-        ]}
+        minHeight='90vh'
       >
         <Logo />
         <Form method="post" noValidate>
@@ -63,9 +56,9 @@ const ForgotPassword = () => {
             ]}
           >
             <Anchor path="/sign-up?step=0">
-              Não tem uma conta? Cadastre-se!
+              Cadastre-se!
             </Anchor>
-            <Anchor path="/">Já possui uma conta? Faça seu Login</Anchor>
+            <Anchor path="/">Faça seu Login</Anchor>
           </FlexContainer>
         </Form>
       </FlexContainer>

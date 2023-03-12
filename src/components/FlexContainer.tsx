@@ -7,7 +7,6 @@ const FlexContainer = ({
   gap,
   flex,
   width,
-  maxWidth,
   minHeight,
   media
 }: {
@@ -20,7 +19,6 @@ const FlexContainer = ({
   };
   flex?: string;
   width?: string;
-  maxWidth?: string;
   minHeight?: string;
   media?: [
     {

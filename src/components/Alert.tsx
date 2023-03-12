@@ -12,13 +12,13 @@ const Alert = ({ children, type }: { children: string; type: AlertType }) => {
       ? 'linear-gradient(to right, #0c2656, #233a66)'
       : 'linear-gradient(to right, #378746, #15c636)'};
     color: var(--white-color);
-    font-size: var(--size-1-2);
+    font-size: var(--size-1);
     font-weight: var(--weight-700);
     text-transform: uppercase;
     text-align: center;
 
     & > p {
-      padding: var(--size-2);
+      padding: var(--size-1-2);
     }
   `;
 
