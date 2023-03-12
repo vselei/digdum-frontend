@@ -34,7 +34,6 @@ import Position from '../components/Position';
 const SS_NAME = 'userSignUpData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  // TODO: Página 404 quando a rota não existir
   // TODO: Remover session storage na página 404
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
@@ -114,7 +113,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const step = Number.parseInt(searchParams.get('step')!) || 0;
 
   if (step < 0 || step >= signUpSteps.length) {
-    console.log('hello');
+    throw new Response('O recurso solicitado não foi encontrado', {
+      status: 404,
+      statusText: 'Not Found'
+    })
   }
 
   const userSignUpDataParsed = getDataFromSS(SS_NAME, '{}');
