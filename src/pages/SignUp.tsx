@@ -34,7 +34,6 @@ import Position from '../components/Position';
 const SS_NAME = 'userSignUpData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  // TODO: Remover session storage na página 404
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
