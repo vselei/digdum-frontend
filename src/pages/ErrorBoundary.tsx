@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { useRouteError } from 'react-router-dom';
 import Anchor from '../components/Anchor';
@@ -36,6 +37,10 @@ const ErrorBoundary = () => {
     statusText: string;
     data: string;
   };
+
+  useEffect(() => {
+    sessionStorage.removeItem('userSignUpData');
+  }, []);
 
   return (
     <>
