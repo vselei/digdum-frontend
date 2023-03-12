@@ -10,7 +10,7 @@ const FlexContainer = ({
   minHeight,
   media
 }: {
-  children: React.ReactElement[];
+  children: React.ReactElement | React.ReactElement[];
   justifyContent?: string;
   alignItems?: string;
   gap?: {

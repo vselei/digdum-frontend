@@ -11,6 +11,7 @@ import ForgotPassword from '../pages/ForgotPassword';
 
 import { ThemesProvider } from '../context/ThemesProvider';
 import { AlertProvider } from '../context/AlertProvider';
+import ErrorBoundary from '../pages/ErrorBoundary';
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const routes = createBrowserRouter([
       </ThemesProvider>
     ),
     loader: layoutLoader,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         path: '/',
