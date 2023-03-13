@@ -18,6 +18,10 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
     removingDataFromSS('loginData');
   }
 
+  if (!path.includes('/forgot-password')) {
+    removingDataFromSS('forgotPasswordData');
+  }
+
   return null;
 };
 

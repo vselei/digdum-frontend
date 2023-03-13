@@ -20,7 +20,7 @@ import IconButton from '../components/IconButton';
 
 import signUpSteps from '../utilities/signUpSteps';
 import usernameGenerator from '../utilities/usernameGenerator';
-import InputValidation from '../utilities/InputValidation';
+import inputValidation from '../utilities/inputValidation';
 
 import { getDataFromSS, storingInputData } from '../utilities/ssCrud';
 
@@ -33,7 +33,9 @@ import Position from '../components/Position';
 const SS_NAME = 'userSignUpData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
+  // TODO: Automatizar remoção de session storages (talvez ?????)
   // TODO: Não armazenar senha no SS
+  // TODO: Validação do back
 
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
@@ -41,7 +43,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   storingInputData(SS_NAME, inputs);
 
   const { isEmpty, emailValidation, biggerThan, passwordMatch } =
-    InputValidation(inputs);
+    inputValidation(inputs);
 
   if (isEmpty) {
     return {

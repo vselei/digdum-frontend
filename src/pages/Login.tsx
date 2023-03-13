@@ -14,7 +14,7 @@ import Anchor from '../components/Anchor';
 import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
 
-import InputValidation from '../utilities/InputValidation';
+import inputValidation from '../utilities/inputValidation';
 
 import AlertType from '../helpers/AlertEnum';
 import useAlert from '../hooks/useAlert';
@@ -25,13 +25,14 @@ const SS_NAME = 'loginData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   // TODO: Não armazenar senha no SS
+  // TODO: Validação do back
 
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
 
   storingInputData(SS_NAME, inputs);
 
-  const { isEmpty, emailValidation, biggerThan } = InputValidation(inputs);
+  const { isEmpty, emailValidation, biggerThan } = inputValidation(inputs);
 
   if (isEmpty) {
     return {

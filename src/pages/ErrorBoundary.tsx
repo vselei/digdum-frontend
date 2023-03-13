@@ -43,6 +43,7 @@ const ErrorBoundary = () => {
   useEffect(() => {
     removingDataFromSS('userSignUpData');
     removingDataFromSS('loginData');
+    removingDataFromSS('forgotPasswordData');
   }, []);
 
   return (

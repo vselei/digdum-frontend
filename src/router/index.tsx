@@ -7,9 +7,8 @@ import AuthLayout from '../layouts/AuthLayout';
 import Login, { action as loginAction } from '../pages/Login';
 import SignUp, {
   action as signUpAction,
-  loader as signUpLoader
 } from '../pages/SignUp';
-import ForgotPassword from '../pages/ForgotPassword';
+import ForgotPassword, {action as forgotPasswordAction} from '../pages/ForgotPassword';
 
 import { ThemesProvider } from '../context/ThemesProvider';
 import { AlertProvider } from '../context/AlertProvider';
@@ -42,7 +41,8 @@ const routes = createBrowserRouter([
           },
           {
             path: '/forgot-password',
-            element: <ForgotPassword />
+            element: <ForgotPassword />,
+            action: forgotPasswordAction
           }
         ]
       }

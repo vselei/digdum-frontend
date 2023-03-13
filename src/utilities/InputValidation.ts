@@ -1,4 +1,4 @@
-const InputValidation = (inputs: { [k: string]: FormDataEntryValue }) => {
+const inputValidation = (inputs: { [k: string]: FormDataEntryValue }) => {
   const inputValues = [...Object.values(inputs)];
 
   if (inputValues.includes('')) {
@@ -29,4 +29,4 @@ const InputValidation = (inputs: { [k: string]: FormDataEntryValue }) => {
   };
 };
 
-export default InputValidation;
+export default inputValidation;
