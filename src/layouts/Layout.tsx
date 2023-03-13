@@ -14,6 +14,10 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
     removingDataFromSS('userSignUpData');
   }
 
+  if (path !== '/') {
+    removingDataFromSS('loginData');
+  }
+
   return null;
 };
 

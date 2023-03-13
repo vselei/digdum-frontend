@@ -42,6 +42,7 @@ const ErrorBoundary = () => {
 
   useEffect(() => {
     removingDataFromSS('userSignUpData');
+    removingDataFromSS('loginData');
   }, []);
 
   return (
@@ -64,7 +65,7 @@ const ErrorBoundary = () => {
               Erro {error.status} - {error.statusText} ☹️
             </h1>
             <p>
-              {error.data}.{' '}
+              {error.data}{!error.data.endsWith('.') ? '. ' : ' '}
               <Anchor path="/">Voltar para a página inicial</Anchor>
             </p>
           </ErrorBoundaryStyles>
