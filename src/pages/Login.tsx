@@ -1,4 +1,10 @@
-import { Form } from 'react-router-dom';
+import {
+  ActionFunctionArgs,
+  Form,
+  redirect,
+  useActionData
+} from 'react-router-dom';
+import { useEffect } from 'react';
 
 import Head from '../components/Head';
 import FormInput from '../components/FormInput';
@@ -8,8 +14,65 @@ import Anchor from '../components/Anchor';
 import FlexContainer from '../components/FlexContainer';
 import Heading from '../components/Heading';
 
+import InputValidation from '../utilities/InputValidation';
+
+import AlertType from '../helpers/AlertEnum';
+import useAlert from '../hooks/useAlert';
+
+import { getDataFromSS, storingInputData } from '../utilities/ssCrud';
+
+const SS_NAME = 'loginData';
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  const inputs = Object.fromEntries(formData);
+
+  storingInputData(SS_NAME, inputs);
+
+  const { isEmpty, emailValidation, biggerThan } = InputValidation(inputs);
+
+  if (isEmpty) {
+    return {
+      type: AlertType.Error,
+      message: 'Todos os campos são obrigatórios'
+    };
+  }
+
+  if (inputs.email && !emailValidation!(inputs.email)) {
+    return {
+      type: AlertType.Error,
+      message: 'Formato de e-mail incorreto'
+    };
+  }
+
+  if (inputs.password && !biggerThan!(inputs.password, 8)) {
+    return {
+      type: AlertType.Error,
+      message: 'A senha tem que ter no mínimo 8 caracteres'
+    };
+  }
+
+  return redirect('/bamboo-forest');
+};
+
 const Login = () => {
-  // TODO: Validar
+  const actionData = useActionData() as {
+    type: AlertType;
+    message: string;
+  };
+
+  const { showAlert } = useAlert();
+
+  useEffect(() => {
+    if (actionData?.message) {
+      showAlert({
+        message: actionData.message,
+        type: actionData.type
+      });
+    } else {
+      showAlert({ type: AlertType.Error, message: '' });
+    }
+  }, [actionData]);
 
   return (
     <>
@@ -25,7 +88,7 @@ const Login = () => {
           row: 'var(--size-2)'
         }}
         flex="1 1 var(--resolution-240)"
-        minHeight='90vh'
+        minHeight="90vh"
       >
         <Logo />
         <Form method="post" noValidate>
@@ -35,14 +98,14 @@ const Login = () => {
             label="E-mail"
             type="email"
             placeholder="Digite seu e-mail"
-            defaultValue=""
+            defaultValue={getDataFromSS(SS_NAME, '{}')['email'] || ''}
           />
           <FormInput
             id="password"
             label="Senha"
             type="password"
             placeholder="Digite sua senha"
-            defaultValue=""
+            defaultValue={getDataFromSS(SS_NAME, '{}')['password'] || ''}
           />
           <Button type="submit">Entrar</Button>
           <FlexContainer
