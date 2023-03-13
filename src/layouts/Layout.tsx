@@ -5,11 +5,13 @@ import useAlert from '../hooks/useAlert';
 import Alert from '../components/Alert';
 import GlobalStyles from '../components/GlobalStyles';
 
+import { removingDataFromSS } from '../utilities/ssCrud';
+
 export const loader = ({ request }: LoaderFunctionArgs) => {
   const path = new URL(request.url).pathname;
 
   if (!path.includes('/sign-up')) {
-    sessionStorage.removeItem('userSignUpData');
+    removingDataFromSS('userSignUpData');
   }
 
   return null;

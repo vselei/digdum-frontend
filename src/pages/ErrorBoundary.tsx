@@ -9,6 +9,8 @@ import FlexContainer from '../components/FlexContainer';
 import GlobalStyles from '../components/GlobalStyles';
 import Head from '../components/Head';
 
+import { removingDataFromSS } from '../utilities/ssCrud';
+
 const ErrorBoundaryStyles = styled.div`
   color: var(--primary-color);
   text-transform: uppercase;
@@ -39,7 +41,7 @@ const ErrorBoundary = () => {
   };
 
   useEffect(() => {
-    sessionStorage.removeItem('userSignUpData');
+    removingDataFromSS('userSignUpData');
   }, []);
 
   return (

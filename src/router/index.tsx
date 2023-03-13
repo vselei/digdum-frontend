@@ -2,9 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import ErrorBoundary from '../pages/ErrorBoundary';
 
-import Layout, {loader as layoutLoader} from '../layouts/Layout';
+import Layout, { loader as layoutLoader } from '../layouts/Layout';
 import AuthLayout from '../layouts/AuthLayout';
-import Login from '../pages/Login';
+import Login, { action as loginAction } from '../pages/Login';
 import SignUp, {
   action as signUpAction,
   loader as signUpLoader
@@ -32,13 +32,13 @@ const routes = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Login />
+            element: <Login />,
+            action: loginAction
           },
           {
             path: '/sign-up',
             element: <SignUp />,
-            action: signUpAction,
-            loader: signUpLoader
+            action: signUpAction
           },
           {
             path: '/forgot-password',

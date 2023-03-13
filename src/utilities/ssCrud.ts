@@ -1,3 +1,7 @@
+const getDataFromSS = (ssName: string, defaultValue: string) => {
+  return JSON.parse(sessionStorage.getItem(ssName) || defaultValue);
+}
+
 const storingInputData = (
   ssName: string,
   inputs: {
@@ -15,4 +19,8 @@ const storingInputData = (
   );
 };
 
-export default storingInputData;
+const removingDataFromSS = (ssName: string) => {
+  sessionStorage.removeItem(ssName);
+}
+
+export {getDataFromSS, storingInputData, removingDataFromSS};

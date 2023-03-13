@@ -4,7 +4,6 @@ import {
   LoaderFunctionArgs,
   Form,
   redirect,
-  useLoaderData,
   useActionData,
   useSearchParams,
   useNavigate
@@ -20,10 +19,10 @@ import Heading from '../components/Heading';
 import IconButton from '../components/IconButton';
 
 import signUpSteps from '../utilities/signUpSteps';
-import storingInputData from '../utilities/storingInputData';
-import getDataFromSS from '../utilities/getDataFromSS';
 import usernameGenerator from '../utilities/usernameGenerator';
 import InputValidation from '../utilities/InputValidation';
+
+import { getDataFromSS, storingInputData } from '../utilities/ssCrud';
 
 import AlertType from '../helpers/AlertEnum';
 import IconButtonType from '../helpers/IconButtonEnum';
@@ -115,18 +114,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     throw new Response('O recurso solicitado não foi encontrado', {
       status: 404,
       statusText: 'Not Found'
-    })
+    });
   }
-
-  const userSignUpDataParsed = getDataFromSS(SS_NAME, '{}');
-
-  if (step < signUpSteps.length - 1) {
-    return '';
-  }
-
-  const usernameGen = usernameGenerator(userSignUpDataParsed['complete-name']);
-
-  return usernameGen;
 };
 
 const SignUp = () => {
@@ -134,8 +123,6 @@ const SignUp = () => {
     type: AlertType;
     message: string;
   };
-
-  const defaultValue = useLoaderData() as string;
 
   const [searchParams] = useSearchParams();
   const step = parseInt(searchParams.get('step')!) || 0;
@@ -169,7 +156,7 @@ const SignUp = () => {
           row: 'var(--size-2)'
         }}
         flex="1 1 var(--resolution-240)"
-        minHeight='calc(var(--h-100) - var(--size-2) * 3)'
+        minHeight="calc(var(--h-100) - var(--size-2) * 3)"
       >
         <Logo />
         <Form method="post" noValidate>
@@ -219,7 +206,11 @@ const SignUp = () => {
               type={step.type}
               placeholder={step.placeholder}
               defaultValue={
-                getDataFromSS(SS_NAME, '{}')[step.id] || defaultValue
+                getDataFromSS(SS_NAME, '{}')[step.id] || step.id === 'username'
+                  ? usernameGenerator(
+                      getDataFromSS(SS_NAME, '{}')['complete-name']
+                    )
+                  : ''
               }
             />
           ))}
