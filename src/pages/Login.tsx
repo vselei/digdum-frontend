@@ -24,7 +24,6 @@ import { getDataFromSS, storingInputData } from '../utilities/ssCrud';
 const SS_NAME = 'loginData';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  // TODO: Não armazenar senha no SS
   // TODO: Validação do back
 
   const formData = await request.formData();
