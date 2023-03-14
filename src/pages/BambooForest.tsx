@@ -5,7 +5,7 @@ const BambooForest = () => {
     <>
       <Head
         title="Bamboo Forest"
-        description="Poste vídeos, digdums, fotos e muito mais! Cresça rapidamente com nosso super algoritmo, mantenha a temperatura da sua toca quente, para conseguir mais engajamento. Se torne um Panda! A rede social tudo em um, bem-vindo ao DigDum."
+        description="Poste vídeos, digdums, fotos e muito mais! Cresça rapidamente com nosso super algoritmo, mantendo a temperatura da sua toca quente, para conseguir mais engajamento. Não perca mais tempo e se torne um Panda! A rede social tudo em um, bem-vindo ao DigDum."
       />
     </>
   );
