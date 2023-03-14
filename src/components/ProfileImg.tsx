@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
-import Image from './Image';
+const Image = styled.img`
+  width: var(--size-full);
+`;
 
 const ProfileImg = ({ src, size }: { src: string; size: string }) => {
   const ProfileImgContainer = styled.div`

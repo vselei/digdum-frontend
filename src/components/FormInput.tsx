@@ -37,7 +37,7 @@ const FormInput = ({
       >
         <Label htmlFor={id}>{label}</Label>
         {id === 'password' || id === 'confirm-password' ? (
-          <IconButton type={IconButtonType.One} onClickHandler={handlePasswordVisibility}>
+          <IconButton type={IconButtonType.Two} onClickHandler={handlePasswordVisibility}>
             {passwordIsVisible ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ const FormInput = ({
             )}
           </IconButton>
         ) : id === 'username' ? (
-          <IconButton type={IconButtonType.One} onClickHandler={() => navigate('/sign-up?step=2')}>
+          <IconButton type={IconButtonType.Two} onClickHandler={() => navigate('/sign-up?step=2')}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
