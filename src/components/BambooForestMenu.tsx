@@ -3,15 +3,18 @@ import IconButtonType from '../helpers/IconButtonEnum';
 import Container from './Container';
 import FlexContainer from './FlexContainer';
 import IconButton from './IconButton';
+import Logo from './Logo';
 import ProfileImg from './ProfileImg';
-import SearchPandas from './SearchPandas';
 
 import ProfileImage from '/img/profile.jpg';
 
 const Header = styled.header`
   width: var(--w-100);
   background-color: var(--gradient);
-  padding: var(--size-1);
+`;
+
+const LogoContainer = styled.div`
+  width: 15rem;
 `;
 
 const BambooForestMenu = () => {
@@ -62,7 +65,9 @@ const BambooForestMenu = () => {
               </svg>
             </IconButton>
           </FlexContainer>
-          <SearchPandas />
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
           <IconButton type={IconButtonType.One} onClickHandler={() => {}}>
             <ProfileImg src={ProfileImage} size="var(--size-4)" />
           </IconButton>
