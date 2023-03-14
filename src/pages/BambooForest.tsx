@@ -1,5 +1,14 @@
+import Head from '../components/Head';
+
 const BambooForest = () => {
-  return <h1>Bamboo Forest</h1>
+  return (
+    <>
+      <Head
+        title="Bamboo Forest"
+        description="Poste vídeos, digdums, fotos e muito mais! Cresça rapidamente com nosso super algoritmo, mantenha a temperatura da sua toca quente, para conseguir mais engajamento. Se torne um Panda! A rede social tudo em um, bem-vindo ao DigDum."
+      />
+    </>
+  );
 };
 
 export default BambooForest;

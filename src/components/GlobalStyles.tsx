@@ -9,14 +9,14 @@ const GlobalStyles = () => {
     styles={css`
       :root {
         /* colors */
-        --primary-color: ${theme === 'light' ? '#030110' : '#f4f4f4'};
-        --secondary-color: ${theme === 'dark' ? '#030110' : '#f4f4f4'};
+        --primary-color: ${theme === 'light' ? '#03020c' : '#f4f4f4'};
+        --secondary-color: ${theme === 'dark' ? '#03020c' : '#f4f4f4'};
 
         --white-color: #f4f4f4;
 
         --gradient: ${theme === 'dark'
-          ? 'linear-gradient(to right, #04020f, var(--secondary-color))'
-          : 'linear-gradient(to right, #ffffff, var(--secondary-color))'};
+          ? 'linear-gradient(to right, #06050f, var(--secondary-color))'
+          : 'linear-gradient(to right, #fefefe, var(--secondary-color))'};
 
         /* sizes */
         --size-1: 1rem;
