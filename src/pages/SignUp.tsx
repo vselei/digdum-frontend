@@ -189,7 +189,7 @@ const SignUp = () => {
                 ]}
               >
                 <IconButton
-                  type={IconButtonType.Two}
+                  type={IconButtonType.Three}
                   onClickHandler={() => navigate(`/sign-up?step=${step - 1}`)}
                 >
                   <svg

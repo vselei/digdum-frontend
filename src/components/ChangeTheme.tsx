@@ -7,7 +7,7 @@ const ChangeTheme = () => {
   const { handleThemeChanges, theme } = useThemes();
 
   return (
-    <IconButton type={IconButtonType.Two} onClickHandler={handleThemeChanges}>
+    <IconButton type={IconButtonType.Three} onClickHandler={handleThemeChanges}>
       {theme === 'dark' ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"

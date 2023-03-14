@@ -26,11 +26,13 @@ const BambooForestMenu = () => {
         <Container>
           <FlexContainer justifyContent="space-between" alignItems="center">
             <HeaderLogoContainer>
-              <Image
-                src={Icon}
-                width={40}
-                alt="Icone DigDum: um panda azul escuro e branco"
-              />
+              <button type='button'>
+                <Image
+                  src={Icon}
+                  width={40}
+                  alt="Icone DigDum: um panda azul escuro e branco"
+                />
+              </button>
             </HeaderLogoContainer>
             <Link to="/panda">
               <ProfileImg src={ProfileImage} size="var(--size-4)" />

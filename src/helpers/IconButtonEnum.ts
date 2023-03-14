@@ -1,6 +1,7 @@
 enum IconButtonType {
   One,
-  Two
+  Two,
+  Three
 }
 
 export default IconButtonType;

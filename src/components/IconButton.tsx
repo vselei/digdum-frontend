@@ -4,6 +4,10 @@ import IconButtonType from '../helpers/IconButtonEnum';
 
 const IconButtonTypeOne = styled.button`
   cursor: pointer;
+`;
+
+const IconButtonTypeTwo = styled.button`
+  cursor: pointer;
   color: var(--primary-color);
 
   & > svg {
@@ -11,7 +15,7 @@ const IconButtonTypeOne = styled.button`
   }
 `;
 
-const IconButtonTypeTwo = styled.button`
+const IconButtonTypeThree = styled.button`
   cursor: pointer;
   border: 1px solid var(--primary-color);
   padding: var(--size-1);
@@ -40,11 +44,17 @@ const IconButton = ({
         {children}
       </IconButtonTypeOne>
     );
-  } else {
+  } else if (type === IconButtonType.Two) {
     return (
       <IconButtonTypeTwo type="button" onClick={onClickHandler}>
         {children}
       </IconButtonTypeTwo>
+    );
+  } else {
+    return (
+      <IconButtonTypeThree type="button" onClick={onClickHandler}>
+        {children}
+      </IconButtonTypeThree>
     );
   }
 };
