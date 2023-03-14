@@ -6,7 +6,7 @@ import DarkThemeLogo from '/img/digdum-logo2.svg';
 import useThemes from '../hooks/useThemes';
 
 const ImageLogo = styled.img`
-  max-width: 100%;
+  max-width: var(--size-full);
 `;
 
 const Logo = () => {

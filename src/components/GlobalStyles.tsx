@@ -9,10 +9,14 @@ const GlobalStyles = () => {
     styles={css`
       :root {
         /* colors */
-        --primary-color: ${theme === 'light' ? '#050119' : '#f4f4f4'};
-        --secondary-color: ${theme === 'dark' ? '#050119' : '#f4f4f4'};
+        --primary-color: ${theme === 'light' ? '#030110' : '#f4f4f4'};
+        --secondary-color: ${theme === 'dark' ? '#030110' : '#f4f4f4'};
 
         --white-color: #f4f4f4;
+
+        --gradient: ${theme === 'dark'
+          ? 'linear-gradient(to right, #04020f, var(--secondary-color))'
+          : 'linear-gradient(to right, #ffffff, var(--secondary-color))'};
 
         /* sizes */
         --size-1: 1rem;
@@ -20,6 +24,7 @@ const GlobalStyles = () => {
         --size-2: 2rem;
         --size-3: 3rem;
         --size-4: 4rem;
+        --size-5: 5rem;
 
         --size-full: 100%;
 
@@ -38,6 +43,9 @@ const GlobalStyles = () => {
 
         /* animations */
         --animation-300: 300ms;
+
+        /* radius */
+        --radius-full: 50%;
       }
 
       html {
@@ -57,9 +65,7 @@ const GlobalStyles = () => {
       body {
         font-family: 'Montserrat', sans-serif;
         min-height: var(--h-100);
-        background: ${theme === 'dark'
-          ? 'linear-gradient(to right, #030114, var(--secondary-color))'
-          : 'linear-gradient(to right, #ffffff, var(--secondary-color))'};
+        background: var(--gradient);
       }
 
       h1,

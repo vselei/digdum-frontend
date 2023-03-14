@@ -7,11 +7,14 @@ import AuthLayout from '../layouts/AuthLayout';
 import Login, { action as loginAction } from '../pages/Login';
 import SignUp, {
   action as signUpAction,
+  loader as signUpLoader
 } from '../pages/SignUp';
 import ForgotPassword, {action as forgotPasswordAction} from '../pages/ForgotPassword';
 
 import { ThemesProvider } from '../context/ThemesProvider';
 import { AlertProvider } from '../context/AlertProvider';
+import BambooForestLayout from '../layouts/BambooForestLayout';
+import BambooForest from '../pages/BambooForest';
 
 const routes = createBrowserRouter([
   {
@@ -37,12 +40,23 @@ const routes = createBrowserRouter([
           {
             path: '/sign-up',
             element: <SignUp />,
-            action: signUpAction
+            action: signUpAction,
+            loader: signUpLoader
           },
           {
             path: '/forgot-password',
             element: <ForgotPassword />,
             action: forgotPasswordAction
+          }
+        ]
+      },
+      {
+        path: '/bamboo-forest',
+        element: <BambooForestLayout />,
+        children: [
+          {
+            index: true,
+            element: <BambooForest />
           }
         ]
       }

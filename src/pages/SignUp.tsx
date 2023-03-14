@@ -6,7 +6,8 @@ import {
   redirect,
   useActionData,
   useSearchParams,
-  useNavigate
+  useNavigate,
+  useLoaderData
 } from 'react-router-dom';
 
 import Head from '../components/Head';
@@ -118,6 +119,12 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       statusText: 'Not Found'
     });
   }
+
+  if (step < signUpSteps.length - 1) {
+    return ''
+  } 
+
+  return usernameGenerator(getDataFromSS(SS_NAME, '{}')['complete-name'])
 };
 
 const SignUp = () => {
@@ -125,6 +132,9 @@ const SignUp = () => {
     type: AlertType;
     message: string;
   };
+
+  const loaderData = useLoaderData();
+  console.log(loaderData);
 
   const [searchParams] = useSearchParams();
   const step = parseInt(searchParams.get('step')!) || 0;
@@ -207,13 +217,7 @@ const SignUp = () => {
               label={step.label}
               type={step.type}
               placeholder={step.placeholder}
-              defaultValue={
-                getDataFromSS(SS_NAME, '{}')[step.id] || step.id === 'username'
-                  ? usernameGenerator(
-                      getDataFromSS(SS_NAME, '{}')['complete-name']
-                    )
-                  : ''
-              }
+              defaultValue={getDataFromSS(SS_NAME, '{}')[step.id] || loaderData}
             />
           ))}
           <Button type="submit">
